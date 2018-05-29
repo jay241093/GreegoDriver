@@ -1,0 +1,156 @@
+PODS:
+  - Alamofire (5.0.0.beta.1)
+  - CTCheckbox (0.0.5)
+  - EVReflection (5.6.1):
+    - EVReflection/Core (= 5.6.1)
+  - EVReflection/Core (5.6.1)
+  - Firebase/Core (5.0.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.0)
+  - Firebase/CoreOnly (5.0.0):
+    - FirebaseCore (= 5.0.0)
+  - Firebase/Messaging (5.0.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.0)
+  - FirebaseAnalytics (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.0):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - FloatRatingView (2.0)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - IQKeyboardManagerSwift (6.0.3)
+  - Kingfisher (4.7.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - PKHUD (5.0.0)
+  - Protobuf (3.5.0)
+  - R.swift (4.0.0):
+    - R.swift.Library (~> 4.0.0)
+  - R.swift.Library (4.0.0)
+  - Stripe (13.0.0)
+  - SVPinView (1.0.2)
+  - SVProgressHUD (2.2.5)
+  - SwiftCop (1.1.0)
+  - SwiftLocation (3.2.3):
+    - SwiftyJSON (~> 4.0.0-alpha.1)
+  - SwiftyJSON (4.0.0)
+  - SwiftyUserDefaults (3.0.1)
+  - Toucan (1.0.0)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
+  - CTCheckbox
+  - EVReflection
+  - Firebase/Core
+  - Firebase/Messaging
+  - FloatRatingView (~> 2.0.0)
+  - GoogleMaps
+  - GooglePlaces
+  - IQKeyboardManagerSwift
+  - Kingfisher (~> 4.0)
+  - PKHUD
+  - R.swift
+  - Stripe
+  - SVPinView (~> 1.0.1)
+  - SVProgressHUD
+  - SwiftCop
+  - SwiftLocation (~> 3.2.3)
+  - SwiftyJSON
+  - SwiftyUserDefaults
+  - Toucan
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CTCheckbox
+    - EVReflection
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FloatRatingView
+    - GoogleMaps
+    - GooglePlaces
+    - GoogleToolboxForMac
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - nanopb
+    - PKHUD
+    - Protobuf
+    - R.swift
+    - R.swift.Library
+    - Stripe
+    - SVPinView
+    - SVProgressHUD
+    - SwiftCop
+    - SwiftLocation
+    - SwiftyJSON
+    - SwiftyUserDefaults
+    - Toucan
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: alamofire5
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 32e38a4db9f96a1391c6727044d29676dd0322a2
+    :git: https://github.com/Alamofire/Alamofire.git
+
+SPEC CHECKSUMS:
+  Alamofire: 8dc618ab9e6a26d9d77559e4c35e59e56451e69e
+  CTCheckbox: fec0e51c635ad555effd230a1fa186105010a382
+  EVReflection: d05ebbafc851b7a4cd3d625182662463a5819ab8
+  Firebase: 4bd804448ab2596794698773d41520a0af101e65
+  FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
+  FirebaseCore: e46e4babb9de298fb2f736958edcc6da1dc60d73
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FirebaseMessaging: f2360a966ecfb0d14facf0fbdf306efc2df0ddbe
+  FloatRatingView: 857ab8f10040d06a42fc979f486c8f9fecd2f2e5
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
+  R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
+  Stripe: 542f2c4493ce31a99fa041fe4973206e8c868f29
+  SVPinView: 6d1bbc2b1e68b1fe8bcb179c4efdc8d0fd879be2
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftCop: 52c1c097f0549f605b986832c1661f3275b82df2
+  SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
+  Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
+
+PODFILE CHECKSUM: 76cf199ec251dea311f08e77cf20e4e5d76a5a07
+
+COCOAPODS: 1.5.0

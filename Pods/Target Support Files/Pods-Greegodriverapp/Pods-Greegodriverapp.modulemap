@@ -1,0 +1,6 @@
+framework module Pods_Greegodriverapp {
+  umbrella header "Pods-Greegodriverapp-umbrella.h"
+
+  export *
+  module * { export * }
+}

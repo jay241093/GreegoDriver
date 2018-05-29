@@ -1,0 +1,47 @@
+//
+//  DefaultsHelper.swift
+//  Greegodriverapp
+//
+//  Created by Harshal Shah on 03/05/18.
+//  Copyright © 2018 Harshal Shah. All rights reserved.
+//
+
+import Foundation
+import SwiftyUserDefaults
+
+//MARK: UserDefault keys
+//      it helps accessing userdefault spainless
+//HOW to USE:
+//This is a key      let alreaySignedInKey = DefaultsKey<Bool>("alreadySignedIn")
+//This is how you access it
+//                   Defaults[alreaySignedInKey._key] = false
+
+extension DefaultsKeys {
+    static let fcmTokenkey =  DefaultsKey<String>("FCMToken")
+    static let deviceTokenKey = DefaultsKey<String>("devicetoken")
+    static let profileStatusKey = DefaultsKey<Int>("profilestatus")
+    static let isAleradyLoggedIn = DefaultsKey<Bool>("alreadyLoggedIn")
+    static let isAprrovedKey = DefaultsKey<Int>("isaprroved")
+    static let CardTokenKey = DefaultsKey<String>("cardToken")
+    static let CurrentTripIDKey = DefaultsKey<Int>("CurrentTripIDKey")
+    static let CurrentTripStatusKey = DefaultsKey<Int>("currentTripStatusKey")
+    
+<<<<<<< HEAD
+=======
+    static let profileImageString = DefaultsKey<String>("profileImgKey")
+
+>>>>>>> abacbe7cdb728b798a7dec43c5266bd3be3d6113
+
+
+    static let profileImageString = DefaultsKey<String>("profileImgKey")
+
+    
+    
+}
+
+
+func AlertBuilder(title:String, message: String) -> UIAlertController{
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    return alert
+}

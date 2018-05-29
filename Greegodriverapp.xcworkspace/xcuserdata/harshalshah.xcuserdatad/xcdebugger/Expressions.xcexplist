@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GLOBAL">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.imgstr2!">
+            </PersistentString>
+            <PersistentString
+               value = "self.imgstr3!">
+            </PersistentString>
+            <PersistentString
+               value = "self.imgstr4!">
+            </PersistentString>
+            <PersistentString
+               value = "self.finaldateary">
+            </PersistentString>
+            <PersistentString
+               value = "self.imgstr1!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MobilenumberViewController.checkmobile():MobilenumberViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DriverdocumentViewController.btnnextaction(_:):DriverdocumentViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.imgstr2">
+            </PersistentString>
+            <PersistentString
+               value = "self.imgstr1">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MobilenumberViewController.checkmobile():MobilenumberViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in EarningVC.gettriphisotry():EarningVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "a">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DriverdocumentViewController.btnnextaction(_:):DriverdocumentViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "image1">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
