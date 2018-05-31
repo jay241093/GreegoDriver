@@ -127,7 +127,7 @@ class MobilenumberViewController: UIViewController {
                         }
                         else{
                             if let message = dic.value(forKey: "message") as? String{
-                                let alert = AlertBuilder(title: "oops", message: "The Mobilenumber is invalid")
+                                let alert = AlertBuilder(title: "oops", message: "mobile number is invalid")
                                 self.present(alert, animated: true, completion: nil)
 
                             }

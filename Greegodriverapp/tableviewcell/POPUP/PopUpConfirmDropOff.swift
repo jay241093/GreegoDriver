@@ -41,7 +41,7 @@ class PopUpConfirmDropOff: UIViewController {
         
         
         
-        lblArrivedAtLocation.text = "Did You Arrive at \(nameOfuser)'s Destination"
+        lblArrivedAtLocation.text = "Did You Arrived at \(nameOfuser)'s Destination"
         
     }
     override func didReceiveMemoryWarning() {
