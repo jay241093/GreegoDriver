@@ -33,9 +33,11 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
     var triphisoryary = NSMutableArray()
     var weeekdays = NSMutableArray()
     var totalcost: Double = 0
+    var isOnOffBtnON: Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        isOnOffBtnON = Defaults[.isOnOffBtnON]
+
         
         aCollectionView.layer.borderWidth = 2.0
         aCollectionView.layer.borderColor = UIColor.lightGray.cgColor
@@ -51,6 +53,12 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
         let tap = UITapGestureRecognizer()
         tap.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
         imguser.addGestureRecognizer(tap)
+        
+        
+        let tap1 = UITapGestureRecognizer()
+        tap1.addTarget(self, action: #selector(OnOffButtonAction))
+        btnOnOff.addGestureRecognizer(tap1)
+        
         if revealViewController() != nil
         {
           //  view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -76,6 +84,130 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
         let resource = ImageResource(downloadURL: URL(string: image)!)
         
         imguser.kf.setImage(with: resource, placeholder: UIImage(named:"download"), options: nil, progressBlock:nil, completionHandler: nil)
+        
+    }
+    
+    @objc func OnOffButtonAction(sender: UITapGestureRecognizer) {
+        print("on Off Button Tapped")
+        
+        
+        
+        
+        var parmm:Parameters = [:]
+        if Defaults[.isOnOffBtnON] {
+            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure you want to change from OFF to ON?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                parmm = [
+                    "driver_on":1,
+                ]
+                let token = Defaults[.deviceTokenKey]
+                let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+                
+                Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
+                    switch response.result{
+                    case .success(let resp):
+                        //print(resp)
+                        if self.isOnOffBtnON {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
+                            self.isOnOffBtnON = false
+                            Defaults[.isOnOffBtnON] = false
+                            
+                            
+                        }else {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "ON")
+                            self.isOnOffBtnON = true
+                            Defaults[.isOnOffBtnON] = true
+                            
+                            
+                        }
+                    case .failure(let err):
+                        print(err)
+                        print("Failed to change ")
+                        let alert = AlertBuilder(title: "OOps", message: "Unable to Change Driver Status \n Try Again")
+                        self.present(alert, animated: true, completion: nil)
+                        StopSpinner()
+                        
+                        
+                    }
+                    
+                    
+                    
+                    //
+                    
+                    
+                    
+                }            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+            
+            
+            
+        }else{
+            
+            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure you want to change from ON to OFF?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                parmm = [
+                    "driver_on":0,
+                ]
+                
+                let token = Defaults[.deviceTokenKey]
+                let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+                
+                Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
+                    switch response.result{
+                    case .success(let resp):
+                        // print(resp)
+                        if self.isOnOffBtnON {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
+                            self.isOnOffBtnON = false
+                            Defaults[.isOnOffBtnON] = false
+                            
+                            
+                        }else {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "ON")
+                            self.isOnOffBtnON = true
+                            Defaults[.isOnOffBtnON] = true
+                            
+                            
+                        }
+                    case .failure(let err):
+                        print(err)
+                        print("Failed to change ")
+                        let alert = AlertBuilder(title: "OOps", message: "Unable to Change Driver Status \n Try Again")
+                        self.present(alert, animated: true, completion: nil)
+                        StopSpinner()
+                        
+                        
+                    }
+                    
+                    
+                    
+                    //
+                    
+                    
+                    
+                }            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+            
+            
+        }
+        
+        
+        //if current img is on
+        // when tapped ,send 1 to server
+        // on successfull responce change image to off
+        
         
     }
     
@@ -160,8 +292,8 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
         
         cell.lbldatetime.text = dic.value(forKey:"created_at") as! String
         
-        let time = dic.value(forKey: "total_estimated_travel_time") as? NSNumber
-        cell.lbltotaltime.text = (time?.stringValue)! + " Minutes"
+        let time = dic.value(forKey: "total_estimated_travel_time") as? String
+        cell.lbltotaltime.text = time! + ""
         
         
         
@@ -199,14 +331,20 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
         
         
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       
+      
         
         var dvc:Payoutdetailcell = collectionView.dequeueReusableCell(withReuseIdentifier:"cell", for: indexPath) as! Payoutdetailcell
-        
+    
         
         if(indexPath.row == 0)
         {
+            var hour : Int = 0
+            var minutes : Int = 0
+            var seconds : Int = 0
+            
             var num = 0
             var cost: Double = 0
             if(todayary.count > 0)
@@ -219,8 +357,19 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                 
                 var num1 : NSNumber = 0
                 
-                if let b = dic.value(forKey:"total_estimated_travel_time") as? NSNumber{
-                    num1 = b
+                if let b = dic.value(forKey:"total_estimated_travel_time") as? String{
+                    
+                    let fullname = dic.value(forKey:"total_estimated_travel_time") as? String
+                    let first = fullname?.components(separatedBy: ":")
+                    let hour1 = first![0]
+                    let minutes1 = first![1]
+                    let seconds1 = first![2]
+
+                    hour = hour + Int(hour1)!
+                    minutes = minutes + Int(minutes1)!
+                    seconds = seconds + Int(seconds1)!
+
+
                 }
                 
                 var cost1:Double = 0
@@ -233,9 +382,30 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                     cost = cost + cost1
                     num = num + finalnum
                 }
-                
+                if (seconds > 60) {
+                    minutes += seconds / 60;
+                    seconds = seconds % 60;
+                }
+                if (minutes > 60) {
+                    hour += minutes / 60;
+                    minutes = minutes % 60;
+                }
+                var second = String(seconds);
+                var min = String(minutes);
+                var hou = String(hour);
+                if (hou.characters.count < 2) {
+                    hou = "0" + hou;
+                }
+                if (min.characters.count < 2) {
+                    min = "0" + min;
+                }
+                if (second.characters.count < 2) {
+                    second = "0" + second;
+                }
                 dvc.lblamount.text =  "$ " + String(format:"%.2f", cost)
-                dvc.lbltime.text = String(num) + " minutes"
+                
+                
+                dvc.lbltime.text = hou + ":" + min + ":" + second
                 
             }
             
@@ -247,6 +417,10 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
         {
             var num = 0
             var cost: Double = 0
+            var hour : Int = 0
+            var minutes : Int = 0
+            var seconds : Int = 0
+            
             if(self.finaldateary.count > 0)
             {
                 for var i in 0...self.finaldateary.count-1
@@ -256,8 +430,17 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                
                     var num1 : NSNumber = 0
                     
-                    if let b = dic.value(forKey:"total_estimated_travel_time") as? NSNumber{
-                        num1 = b
+                    if let b = dic.value(forKey:"total_estimated_travel_time") as? String{
+                        let fullname = dic.value(forKey:"total_estimated_travel_time") as? String
+                        let first = fullname?.components(separatedBy: ":")
+                        let hour1 = first![0]
+                        let minutes1 = first![1]
+                        let seconds1 = first![2]
+                        
+                        hour = hour + Int(hour1)!
+                        minutes = minutes + Int(minutes1)!
+                        seconds = seconds + Int(seconds1)!
+                        
                     }
                     
                     var cost1:Double = 0
@@ -267,6 +450,7 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                     }
                     
                     //
+                
                     
                     
                     let finalnum = num1.intValue
@@ -275,10 +459,33 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                     num = num + finalnum
                 }
                 
+                
+                if (seconds > 60) {
+                    minutes += seconds / 60;
+                    seconds = seconds % 60;
+                }
+                if (minutes > 60) {
+                    hour += minutes / 60;
+                    minutes = minutes % 60;
+                }
+                var second = String(seconds);
+                var min = String(minutes);
+                var hou = String(hour);
+                if (hou.characters.count < 2) {
+                    hou = "0" + hou;
+                }
+                if (min.characters.count < 2) {
+                    min = "0" + min;
+                }
+                if (second.characters.count < 2) {
+                    second = "0" + second;
+                }
                 dvc.lblamount.text =   "$ " + String(format:"%f", cost)
-                dvc.lbltime.text = String(num) + " minutes"
+                dvc.lbltime.text = hou + ":" + min + ":" + second
                 dvc.lblnumrides.text = String(self.finaldateary.count)
-               
+                
+                
+              
             }
             
             dvc.lblday.text = "Weekly"

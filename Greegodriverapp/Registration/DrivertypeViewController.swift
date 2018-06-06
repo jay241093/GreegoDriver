@@ -39,6 +39,11 @@ class DrivertypeViewController: UIViewController {
     
     }
 
+    @IBAction func btnbackaction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -149,7 +154,7 @@ class DrivertypeViewController: UIViewController {
                     
                     StopSpinner()
                     if let data = response.result.value{
-                        print(response.result.value!)
+                        //print(response.result.value!)
                         
                         
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DriverprofileViewController") as! DriverprofileViewController

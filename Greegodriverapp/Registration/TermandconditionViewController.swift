@@ -126,7 +126,7 @@ class TermandconditionViewController: UIViewController,UIScrollViewDelegate {
                 switch(response.result) {
                 case .success(_):
                     if let data = response.result.value{
-                        print(response.result.value!)
+                        //print(response.result.value!)
                         
                         
                         StopSpinner()

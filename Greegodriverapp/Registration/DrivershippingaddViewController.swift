@@ -277,7 +277,7 @@ class DrivershippingaddViewController: UIViewController,UIPickerViewDelegate,UIP
                     
                     if let data = response.result.value{
                         print("Response of update/shipping")
-                        print(response.result.value!)
+                      //  print(response.result.value!)
                         var dic = response.result.value as! NSDictionary
                         
                         

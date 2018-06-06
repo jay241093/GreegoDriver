@@ -40,7 +40,7 @@ public struct Body: Codable {
     public let fromLat, fromLng: Double
     public let toAddress: String
     public let toLat, toLng: Double
-    public let totalEstimatedTravelTime:Int
+    public let totalEstimatedTravelTime:String
     public let totalEstimatedTripCost:Double
     public let requestStatus: Int
     public let createdAt, updatedAt: String

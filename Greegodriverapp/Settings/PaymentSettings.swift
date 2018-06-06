@@ -27,7 +27,10 @@ class PaymentSettings: UIViewController {
         
         let decodedData = Data(base64Encoded: AccountNumber)!
         let decodedString = String(data: decodedData, encoding: .utf8)!
-        txtFAccountNumber.text = decodedString
+        
+        let last4 = String(decodedString.suffix(4))
+
+        txtFAccountNumber.text =  "************" + last4
 
         setShadow(view: header)
     }

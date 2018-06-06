@@ -155,7 +155,7 @@ class EditProfileVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
                 //if success then lets save userprofile to defaults
                 
                 Defaults.synchronize()
-                print(resp)
+               // print(resp)
                 if resp.errorCode == 0{
                     if let profileStatus = resp.data?.profileStatus{
 

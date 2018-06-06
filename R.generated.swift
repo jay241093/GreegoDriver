@@ -1132,13 +1132,11 @@ struct _R: Rswift.Validatable {
       let drivershippingaddViewController = StoryboardViewControllerResource<DrivershippingaddViewController>(identifier: "DrivershippingaddViewController")
       let drivertypeViewController = StoryboardViewControllerResource<DrivertypeViewController>(identifier: "DrivertypeViewController")
       let earningVC = StoryboardViewControllerResource<EarningVC>(identifier: "EarningVC")
-      let earningbalanceViewController = StoryboardViewControllerResource<EarningbalanceViewController>(identifier: "EarningbalanceViewController")
       let editProfileVC = StoryboardViewControllerResource<EditProfileVC>(identifier: "EditProfileVC")
       let emailViewController = StoryboardViewControllerResource<EmailViewController>(identifier: "EmailViewController")
       let expressPayDetailVC = StoryboardViewControllerResource<ExpressPayDetailVC>(identifier: "ExpressPayDetailVC")
       let expressPayVC = StoryboardViewControllerResource<ExpressPayVC>(identifier: "ExpressPayVC")
       let helpVC = StoryboardViewControllerResource<HelpVC>(identifier: "HelpVC")
-      let helpViewController = StoryboardViewControllerResource<HelpViewController>(identifier: "HelpViewController")
       let helpplolicyVC = StoryboardViewControllerResource<HelpplolicyVC>(identifier: "HelpplolicyVC")
       let helprateVC = StoryboardViewControllerResource<HelprateVC>(identifier: "HelprateVC")
       let lost_foundVC = StoryboardViewControllerResource<lost_foundVC>(identifier: "lost_foundVC")
@@ -1206,10 +1204,6 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: earningVC)
       }
       
-      func earningbalanceViewController(_: Void = ()) -> EarningbalanceViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: earningbalanceViewController)
-      }
-      
       func editProfileVC(_: Void = ()) -> EditProfileVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: editProfileVC)
       }
@@ -1228,10 +1222,6 @@ struct _R: Rswift.Validatable {
       
       func helpVC(_: Void = ()) -> HelpVC? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: helpVC)
-      }
-      
-      func helpViewController(_: Void = ()) -> HelpViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: helpViewController)
       }
       
       func helpplolicyVC(_: Void = ()) -> HelpplolicyVC? {
@@ -1352,57 +1342,52 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "forbes-profile") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'forbes-profile' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "paper_money") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'paper_money' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "payment") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'payment' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "PIG") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'PIG' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "sidemenubackimg") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'sidemenubackimg' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Path 11") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Path 11' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "map_home") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'map_home' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Line 2") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Line 2' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "emptyStar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'emptyStar' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "greego") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'greego' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "ic_greego_logo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_greego_logo' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Exclamation-Point") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Exclamation-Point' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "nextpaybtn") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'nextpaybtn' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Rectangle 1") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Rectangle 1' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "btnbackimg") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'btnbackimg' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "logout") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logout' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "phone call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'phone call' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "home") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'home' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "sport-car-coupe-auto-top-view-512") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'sport-car-coupe-auto-top-view-512' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "Back_button") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Back_button' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "default-user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'default-user' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "navigate") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'navigate' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "uber-everywhere") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'uber-everywhere' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "paper_money") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'paper_money' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "padlock") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'padlock' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "flag for mobile") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'flag for mobile' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "rectangle") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rectangle' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "filledStar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'filledStar' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "right-arrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'right-arrow' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "filledStar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'filledStar' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "nextimg") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'nextimg' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Greego1") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Greego1' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "download-1") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'download-1' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Path 11") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Path 11' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Start-pin") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Start-pin' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ON") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ON' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "cross") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cross' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "driverimg") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'driverimg' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "map_home") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'map_home' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "navigation") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'navigation' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Star-PNG-Image") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Star-PNG-Image' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "share") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'share' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Line 2") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Line 2' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "emptyStar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'emptyStar' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "greego") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'greego' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Rectangle 69") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Rectangle 69' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Exclamation-Point") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Exclamation-Point' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "ic_greego_logo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic_greego_logo' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "share") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'share' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "download") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'download' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "LYFTUBERBLOG") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LYFTUBERBLOG' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Rectangle 1") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Rectangle 1' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "backimg") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'backimg' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "express") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'express' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "email") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'email' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "mobile") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'mobile' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "switchuser") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'switchuser' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "logout") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logout' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "phone call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'phone call' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "lyft") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'lyft' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "sport-car-coupe-auto-top-view-512") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'sport-car-coupe-auto-top-view-512' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "attachment") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'attachment' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "settings-glyph") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings-glyph' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "unnamed (1)") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'unnamed (1)' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "Back_button") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Back_button' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "default-user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'default-user' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "ic alert") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ic alert' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "unnamed (1)") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'unnamed (1)' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "navigate") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'navigate' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "uber-everywhere") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'uber-everywhere' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().popUpUberLyft() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popUpUberLyft' could not be loaded from storyboard 'Main' as 'PopUpUberLyft'.") }
         if _R.storyboard.main().lost_foundVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'lost_foundVC' could not be loaded from storyboard 'Main' as 'lost_foundVC'.") }
         if _R.storyboard.main().mobilenumberViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mobilenumberViewController' could not be loaded from storyboard 'Main' as 'MobilenumberViewController'.") }
@@ -1422,12 +1407,10 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().driverpersonalinfoViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'driverpersonalinfoViewController' could not be loaded from storyboard 'Main' as 'DriverpersonalinfoViewController'.") }
         if _R.storyboard.main().expressPayVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'expressPayVC' could not be loaded from storyboard 'Main' as 'ExpressPayVC'.") }
         if _R.storyboard.main().helpVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'helpVC' could not be loaded from storyboard 'Main' as 'HelpVC'.") }
-        if _R.storyboard.main().helpViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'helpViewController' could not be loaded from storyboard 'Main' as 'HelpViewController'.") }
         if _R.storyboard.main().driverRatingVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'driverRatingVC' could not be loaded from storyboard 'Main' as 'DriverRatingVC'.") }
-        if _R.storyboard.main().earningbalanceViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'earningbalanceViewController' could not be loaded from storyboard 'Main' as 'EarningbalanceViewController'.") }
+        if _R.storyboard.main().helprateVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'helprateVC' could not be loaded from storyboard 'Main' as 'HelprateVC'.") }
         if _R.storyboard.main().driverdocumentViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'driverdocumentViewController' could not be loaded from storyboard 'Main' as 'DriverdocumentViewController'.") }
         if _R.storyboard.main().promocodeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'promocodeViewController' could not be loaded from storyboard 'Main' as 'PromocodeViewController'.") }
-        if _R.storyboard.main().helprateVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'helprateVC' could not be loaded from storyboard 'Main' as 'HelprateVC'.") }
         if _R.storyboard.main().requestDriverVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'requestDriverVC' could not be loaded from storyboard 'Main' as 'Greegodriverapp.RequestDriverVC'.") }
         if _R.storyboard.main().popUpNoUser() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popUpNoUser' could not be loaded from storyboard 'Main' as 'popUpNoUser'.") }
         if _R.storyboard.main().ridehistoryVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'ridehistoryVC' could not be loaded from storyboard 'Main' as 'RidehistoryVC'.") }

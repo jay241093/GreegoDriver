@@ -72,19 +72,13 @@ class DriverRatingVC: UIViewController,FloatRatingViewDelegate,tipthedriverProto
         
         let parmm:Parameters = [
             "trip_id": Defaults[.CurrentTripIDKey],
-            "tip_amount": tipAmmount,
-            "trip_user_rating":currentRating,
-            "transaction_id":"1",
-            "user_card_id": Defaults[.CardTokenKey],
-            "payment_status":"1",
-            "transaction_amount":tripAmmount+tipAmmount,
-            "transaction_description":"This is transaction desc",
+            "rating": currentRating
             ]
         let token = Defaults[.deviceTokenKey]
         let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
         
         
-        Alamofire.request(WebServiceClass().BaseURL + "driver/add/triptransaction", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataresponse) in
+        Alamofire.request(WebServiceClass().BaseURL + "driver/add/userrating", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataresponse) in
             switch dataresponse.result{
             case .success(let resp):
                 print("success add/triptransaction")
@@ -100,10 +94,45 @@ class DriverRatingVC: UIViewController,FloatRatingViewDelegate,tipthedriverProto
             case .failure(let err):
                 print("Some Error is there \(err.localizedDescription)")
                 StopSpinner()
-                let alert = AlertBuilder(title: "oops", message: "Could not send transaction \n Try Again")
+                let alert = AlertBuilder(title: "oops", message: "Could not send rating \n Try Again")
                 self.present(alert, animated: true, completion: nil)
             }
         }
+        
+//        let parmm:Parameters = [
+//            "trip_id": Defaults[.CurrentTripIDKey],
+//            "tip_amount": tipAmmount,
+//            "trip_user_rating":currentRating,
+//            "transaction_id":"1",
+//            "user_card_id": Defaults[.CardTokenKey],
+//            "payment_status":"1",
+//            "transaction_amount":tripAmmount,
+//            "transaction_description":"This is transaction desc",
+//            ]
+//        let token = Defaults[.deviceTokenKey]
+//        let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+//
+//
+//        Alamofire.request(WebServiceClass().BaseURL + "driver/add/triptransaction", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataresponse) in
+//            switch dataresponse.result{
+//            case .success(let resp):
+//                print("success add/triptransaction")
+//                print(resp)
+//                if JSON(resp)["error_code"] == 0{
+//                    self.openPopup()
+//                    StopSpinner()
+//
+//                }
+//                StopSpinner()
+//
+//
+//            case .failure(let err):
+//                print("Some Error is there \(err.localizedDescription)")
+//                StopSpinner()
+//                let alert = AlertBuilder(title: "oops", message: "Could not send transaction \n Try Again")
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
     }
     
     func openPopup(){

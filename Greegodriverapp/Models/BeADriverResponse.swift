@@ -23,7 +23,7 @@ public struct DataClass: Codable {
     public let id, requestID, userID, driverID: Int
     public let status: Int
     public let totalEstimatedTripCost: Double
-    public let totalEstimatedTravelTime: Int
+    public let totalEstimatedTravelTime: String
     public let createdAt, updatedAt: AtedAt
     public let cardToken: String
     

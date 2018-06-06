@@ -100,10 +100,17 @@ class DriverdocumentViewController: UIViewController,UIImagePickerControllerDele
         }
     }
     
+    @IBAction func btnbackaction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     func photoLibrary()
     {
         
         var myPickerController = UIImagePickerController()
+        myPickerController.allowsEditing = true
         myPickerController.delegate = self;
         myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
@@ -113,6 +120,7 @@ class DriverdocumentViewController: UIViewController,UIImagePickerControllerDele
     func camera()
     {
         var myPickerController = UIImagePickerController()
+        myPickerController.allowsEditing = true
         myPickerController.delegate = self;
         myPickerController.sourceType = UIImagePickerControllerSourceType.camera
         

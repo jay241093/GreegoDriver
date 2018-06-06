@@ -92,7 +92,7 @@ class OtpverificationViewController: UIViewController {
             
         {
             
-            let alert = UIAlertController(title: nil, message: "Please Enter otp code", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: nil, message: "Please enter otp code", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -132,7 +132,7 @@ class OtpverificationViewController: UIViewController {
             StartSpinner()
 
             let parameters = [
-                "contact_number":"+1"+strmobileno!,
+                "contact_number":"+91"+strmobileno!,
                 "is_iphone": "1",
                 "user_type": "driver",
                 "device_id":Defaults[.fcmTokenkey]
@@ -147,7 +147,7 @@ class OtpverificationViewController: UIViewController {
                         
                         StopSpinner()
 
-                        print(response.result.value!)
+                       // print(response.result.value!)
                         self.btnresend.isEnabled = false
 
                         
@@ -218,7 +218,7 @@ class OtpverificationViewController: UIViewController {
                 switch(response.result) {
                 case .success(_):
                     if let data = response.result.value{
-                        print(response.result.value!)
+                       // print(response.result.value!)
                         
                         StopSpinner()
                         

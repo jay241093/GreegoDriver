@@ -305,7 +305,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         
         var parmm:Parameters = [:]
         if Defaults[.isOnOffBtnON] {
-            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure want to ON?", preferredStyle: UIAlertControllerStyle.alert)
+            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure you want to change from OFF to ON?", preferredStyle: UIAlertControllerStyle.alert)
             
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 parmm = [
@@ -317,7 +317,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
                 Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
                     switch response.result{
                     case .success(let resp):
-                        print(resp)
+                        //print(resp)
                         if self.isOnOffBtnON {
                             self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
                             self.isOnOffBtnON = false
@@ -359,7 +359,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
             
         }else{
             
-            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure want to OFF?", preferredStyle: UIAlertControllerStyle.alert)
+            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure you want to change from ON to OFF?", preferredStyle: UIAlertControllerStyle.alert)
             
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 parmm = [
@@ -372,7 +372,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
                 Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
                     switch response.result{
                     case .success(let resp):
-                        print(resp)
+                       // print(resp)
                         if self.isOnOffBtnON {
                             self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
                             self.isOnOffBtnON = false
@@ -430,10 +430,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         
         //look is newUpdate view is open and togle it if user taps anywhere in this view
         //get state of each thing
-        
-        
-        
-        
+  
         if isNewUpdateViewOpen  {
             line2.isHidden = true
             line1.isHidden = true
@@ -449,7 +446,18 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
             imgerror.isHidden = false
             lblstatus.isHidden = false
             btnFinishApplication.isHidden = !shouldShowFinishButton
-            heightview.constant = 190
+           // heightview.constant = 190
+            if(shouldShowFinishButton == false)
+            {
+                heightview.constant = 110
+                line2.isHidden = false
+                line1.isHidden = false
+                
+            }
+            else
+            {
+               heightview.constant = 190
+            }
             isNewUpdateViewOpen = true
             
         }
@@ -599,7 +607,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
                 switch dataresponse.result{
                 case .success(let resp):
                     print("sent my location")
-                    print(resp)
+                   // print(resp)
                     
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -621,7 +629,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
             switch dataresponse.result{
             case .success(let resp):
                 print("got Driver Info")
-                print(resp)
+                //print(resp)
                 DriverMe = resp
                 
                 Defaults[.Driverid] = resp.data.id ?? 0
@@ -685,7 +693,12 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
 
 
                     
-                }else if profileLevel == 7 && profiledata.data.isApprove! != 0{
+                }
+                
+                
+                    
+                
+                else if profileLevel == 7 && profiledata.data.isApprove! == 1{
                     //NO Notifications
                     lblstatus.text = "No New Updates"
                     btnprofilecheck.isHidden = true
@@ -699,13 +712,18 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
 
                     
                 }
+                else if profileLevel == 7 && profiledata.data.isApprove! == 2{
+                    self.imgProfilePic.isUserInteractionEnabled = false
+                    self.btnOnOff.isUserInteractionEnabled = false
+                    self.tabBarController?.tabBar.isUserInteractionEnabled = false
+
             }
-        }else{
+        else{
             print("there is an error")
         }
+         }
+        }
     }
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         self.userLocation = (locations.last?.coordinate)!

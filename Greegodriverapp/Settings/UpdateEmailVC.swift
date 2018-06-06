@@ -50,7 +50,7 @@ class UpdateEmailVC: UIViewController {
 
                  StopSpinner()
                     if let data = response.result.value{
-                        print(response.result.value!)
+                        //print(response.result.value!)
                         
                         
                         

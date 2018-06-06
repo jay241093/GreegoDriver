@@ -657,7 +657,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             parmm = [
                 "trip_id": Defaults[.CurrentTripIDKey],
                 "status": status,
-                "actual_trip_travel_time":tripTimeInterval! / 60,
+//                "actual_trip_travel_time":tripTimeInterval! / 60,
                 "actual_trip_amount":actualTripPrice,
                 "actual_trip_miles":totalTripDistance!,
             ]
@@ -701,7 +701,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
                     
                     //TODO:uncoment it
                     self.performSegue(withIdentifier: "ToDriverRatingVirew", sender: myTripResponse)
-                    print(myTripResponse)
+                   // print(myTripResponse)
                     StopSpinner()
                     
                 }

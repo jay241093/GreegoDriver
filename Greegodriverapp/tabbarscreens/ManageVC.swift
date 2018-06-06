@@ -30,9 +30,16 @@ class ManageVC: UIViewController {
     @IBOutlet weak var imguser: UIImageView!
     @IBOutlet weak var btnOnOff: UIImageView!
 
+    var isOnOffBtnON : Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let tap1 = UITapGestureRecognizer()
+        tap1.addTarget(self, action: #selector(OnOffButtonAction))
+        btnOnOff.addGestureRecognizer(tap1)
+        isOnOffBtnON = Defaults[.isOnOffBtnON]
+
         imguser.layer.borderWidth=1.0
         imguser.layer.masksToBounds = false
         imguser.layer.borderColor = UIColor.white.cgColor
@@ -189,6 +196,130 @@ class ManageVC: UIViewController {
         border.borderWidth = width
         textfield.backgroundColor = UIColor.clear
         textfield.layer.addSublayer(border)
+        
+    }
+    
+    @objc func OnOffButtonAction(sender: UITapGestureRecognizer) {
+        print("on Off Button Tapped")
+        
+        
+        
+        
+        var parmm:Parameters = [:]
+        if Defaults[.isOnOffBtnON] {
+            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure you want to change from OFF to ON?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                parmm = [
+                    "driver_on":1,
+                ]
+                let token = Defaults[.deviceTokenKey]
+                let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+                
+                Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
+                    switch response.result{
+                    case .success(let resp):
+                        //print(resp)
+                        if self.isOnOffBtnON {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
+                            self.isOnOffBtnON = false
+                            Defaults[.isOnOffBtnON] = false
+                            
+                            
+                        }else {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "ON")
+                            self.isOnOffBtnON = true
+                            Defaults[.isOnOffBtnON] = true
+                            
+                            
+                        }
+                    case .failure(let err):
+                        print(err)
+                        print("Failed to change ")
+                        let alert = AlertBuilder(title: "OOps", message: "Unable to Change Driver Status \n Try Again")
+                        self.present(alert, animated: true, completion: nil)
+                        StopSpinner()
+                        
+                        
+                    }
+                    
+                    
+                    
+                    //
+                    
+                    
+                    
+                }            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+            
+            
+            
+        }else{
+            
+            var refreshAlert = UIAlertController(title: "Greego", message: "Are you sure you want to change from ON to OFF?", preferredStyle: UIAlertControllerStyle.alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                parmm = [
+                    "driver_on":0,
+                ]
+                
+                let token = Defaults[.deviceTokenKey]
+                let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+                
+                Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
+                    switch response.result{
+                    case .success(let resp):
+                        // print(resp)
+                        if self.isOnOffBtnON {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
+                            self.isOnOffBtnON = false
+                            Defaults[.isOnOffBtnON] = false
+                            
+                            
+                        }else {
+                            self.btnOnOff.image = #imageLiteral(resourceName: "ON")
+                            self.isOnOffBtnON = true
+                            Defaults[.isOnOffBtnON] = true
+                            
+                            
+                        }
+                    case .failure(let err):
+                        print(err)
+                        print("Failed to change ")
+                        let alert = AlertBuilder(title: "OOps", message: "Unable to Change Driver Status \n Try Again")
+                        self.present(alert, animated: true, completion: nil)
+                        StopSpinner()
+                        
+                        
+                    }
+                    
+                    
+                    
+                    //
+                    
+                    
+                    
+                }            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+            
+            
+        }
+        
+        
+        //if current img is on
+        // when tapped ,send 1 to server
+        // on successfull responce change image to off
+        
         
     }
     

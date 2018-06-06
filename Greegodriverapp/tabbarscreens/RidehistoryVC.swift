@@ -46,13 +46,21 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
         super.viewDidLoad()
         
    
-       var distance = driverdic.value(forKey:"actual_trip_miles") as! Double
-        var time = driverdic.value(forKey:"total_estimated_travel_time") as! Double
-        var transaction_id = driverdic.value(forKey:"transaction_id") as! String
+       var distance = driverdic.value(forKey:"actual_trip_miles") as? Double
+        var time = driverdic.value(forKey:"total_estimated_travel_time") as? String
+        var transaction_id = driverdic.value(forKey:"transaction_id") as? String
 
 
-        lblreciptno.text = "Recipt No # : (" + transaction_id + ")"
-        lbldistance.text =  String(format: "%.2f",distance) + " miles ," + String(format: "%.2f",time) + "min"
+        if let id = transaction_id
+        {
+        lblreciptno.text = "Recipt No # : (" + transaction_id! + ")"
+        }
+        else
+        {
+            lblreciptno.text = "Recipt No # : ()"
+
+        }
+        lbldistance.text =  String(format: "%.2f",distance!) + " miles ," + time! + "min"
         
         
         StartLocationUpdateInDevice()
@@ -86,8 +94,8 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
         
         
        lbldate.text = driverdic.value(forKey: "created_at")  as! String
-        lblstart.text = driverdic.value(forKey: "created_at")  as! String
-        lblend.text = driverdic.value(forKey: "updated_at")  as! String
+        lblstart.text = driverdic.value(forKey: "start_time")  as! String
+        lblend.text = driverdic.value(forKey: "end_time")  as! String
 
         let sourcelat = driverdic.value(forKey: "from_lat") as! NSNumber
         let sourcelng = driverdic.value(forKey: "from_lng") as! NSNumber
@@ -102,8 +110,17 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
         self.drawPath(sourceCord: source, destCord: destination)
         
         let amoount = driverdic.value(forKey:"total_estimated_trip_cost") as? Double
-        lbltotal.text =  "$ " +  String(format: "%.2f",amoount!)
         
+        if let id = amoount
+        {
+        lbltotal.text =  "$ " +  String(format: "%.2f",amoount!)
+        }
+        else
+        {
+            
+            lbltotal.text =  "$ 0"
+
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -141,14 +158,18 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
                 
                 //  currentStaterates = rateResponse
                 let amoount = self.driverdic.value(forKey:"total_estimated_trip_cost") as? Double
+                
+               if(amoount != nil)
+               {
                 var greegofee =  (amoount! * rateResponse.data.greegoFee!) / 100
                 
-              self.lblgreegofees.text = "- $ " + String(greegofee)
+                self.lblgreegofees.text = "- $ " + String(format: "%.2f",greegofee)
                 var cost = self.driverdic.value(forKey:"total_estimated_trip_cost") as! Double
                 
            var total =  cost - greegofee
                 
             self.lblfinltotal.text =  "$ " + String(format: "%.2f",total)
+                }
             })
             
             print(stateName)

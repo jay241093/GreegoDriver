@@ -80,7 +80,7 @@ class MobilenumberViewController: UIViewController {
             StartSpinner()
             // print(txtmobilenumber.text!)
             let parameters = [
-                "contact_number":"+1"+txtmobilenumber.text!,
+                "contact_number":"+91"+txtmobilenumber.text!,
                 "is_iphone": "1",
                 "user_type": "driver",
                 "device_id":Defaults[.fcmTokenkey]
@@ -92,7 +92,7 @@ class MobilenumberViewController: UIViewController {
                 case .success(_):
                     if let data = response.result.value{
                         print("MobileNumberViewCOntroller,response of network call:")
-                        print(response.result.value!)
+                       // print(response.result.value!)
                         
                         StopSpinner()
                         

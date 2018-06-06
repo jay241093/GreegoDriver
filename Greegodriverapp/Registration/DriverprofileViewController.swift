@@ -15,6 +15,11 @@ class DriverprofileViewController: UIViewController,UIImagePickerControllerDeleg
     @IBOutlet weak var btnprofile: UIButton!
     
     @IBOutlet weak var viewprofile: UIView!
+    @IBAction func btnbackaction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -91,10 +91,10 @@ class DriverpersonalinfoViewController: UIViewController,UITextFieldDelegate {
             if (isBackSpace == -92) {
                 // print("Backspace was pressed")
             }
-            else if newString?.characters.count == 5 || newString?.characters.count == 8 {
+            else if newString?.characters.count == 4 || newString?.characters.count == 7 {
                 textField.text = textField.text! + "-"
             }
-            else if newString?.characters.count == 13 {
+            else if newString?.characters.count == 12 {
                 return false
                 
             }

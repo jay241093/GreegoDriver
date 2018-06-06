@@ -21,6 +21,12 @@ class DriverbankViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var txtroutnum: UITextField!
     
     @IBOutlet weak var txtaccountnum: UITextField!
+    @IBAction func btnbackaction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +48,7 @@ class DriverbankViewController: UIViewController,UITextFieldDelegate {
         if(txtroutnum.text == "")
         {
             
-            let alert = UIAlertController(title: nil, message: "Please Enter Routing Number", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: nil, message: "Please enter routing number", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -106,7 +112,7 @@ class DriverbankViewController: UIViewController,UITextFieldDelegate {
                 switch(response.result) {
                 case .success(_):
                     if let data = response.result.value{
-                        print(response.result.value!)
+                        //print(response.result.value!)
                         
                         StopSpinner()
                         let dic: NSDictionary = response.result.value as! NSDictionary
