@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2109C6DC20A5B3A1002DD7AB /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109C6DB20A5B3A0002DD7AB /* HelpVC.swift */; };
 		2119BF26208B260900C20D4F /* ExpressPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119BF25208B260900C20D4F /* ExpressPayVC.swift */; };
+		2158CBFB20C7C38300D6B949 /* NewHelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158CBFA20C7C38300D6B949 /* NewHelpVC.swift */; };
+		2158CBFD20C7E30500D6B949 /* NewTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2158CBFC20C7E30500D6B949 /* NewTermVC.swift */; };
 		215A6CFC20BD6736006D82B8 /* lost&foundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A6CFB20BD6736006D82B8 /* lost&foundVC.swift */; };
 		215A6CFE20BD674E006D82B8 /* HelprateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A6CFD20BD674E006D82B8 /* HelprateVC.swift */; };
 		215A6D0020BD676B006D82B8 /* HelpaccidentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A6CFF20BD676B006D82B8 /* HelpaccidentVC.swift */; };
@@ -98,6 +100,8 @@
 /* Begin PBXFileReference section */
 		2109C6DB20A5B3A0002DD7AB /* HelpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		2119BF25208B260900C20D4F /* ExpressPayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpressPayVC.swift; sourceTree = "<group>"; };
+		2158CBFA20C7C38300D6B949 /* NewHelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHelpVC.swift; sourceTree = "<group>"; };
+		2158CBFC20C7E30500D6B949 /* NewTermVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTermVC.swift; sourceTree = "<group>"; };
 		215A6CFB20BD6736006D82B8 /* lost&foundVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "lost&foundVC.swift"; sourceTree = "<group>"; };
 		215A6CFD20BD674E006D82B8 /* HelprateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelprateVC.swift; sourceTree = "<group>"; };
 		215A6CFF20BD676B006D82B8 /* HelpaccidentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpaccidentVC.swift; sourceTree = "<group>"; };
@@ -239,8 +243,10 @@
 			isa = PBXGroup;
 			children = (
 				2109C6DB20A5B3A0002DD7AB /* HelpVC.swift */,
+				2158CBFA20C7C38300D6B949 /* NewHelpVC.swift */,
 				215A6CFD20BD674E006D82B8 /* HelprateVC.swift */,
 				215A6D0120BD6781006D82B8 /* HelpplolicyVC.swift */,
+				2158CBFC20C7E30500D6B949 /* NewTermVC.swift */,
 				215A6CFF20BD676B006D82B8 /* HelpaccidentVC.swift */,
 				215A6CFB20BD6736006D82B8 /* lost&foundVC.swift */,
 				736E6065207E1B7400EDC89B /* MenuViewController.swift */,
@@ -681,6 +687,7 @@
 				73D9ECAE209C57D400A3256B /* UploadDocsResponse.swift in Sources */,
 				215A6D0020BD676B006D82B8 /* HelpaccidentVC.swift in Sources */,
 				73C2EA51209B412F00CF2E08 /* UrlConstants.swift in Sources */,
+				2158CBFD20C7E30500D6B949 /* NewTermVC.swift in Sources */,
 				736E605E207E121A00EDC89B /* DrivertypeViewController.swift in Sources */,
 				7364672A20A1A4CF0011CA87 /* BeADriverResponse.swift in Sources */,
 				215E3285208DEBC000CAB24E /* popUpConfirmArrival.swift in Sources */,
@@ -689,6 +696,7 @@
 				734F551E20775E7B00512886 /* ViewController.swift in Sources */,
 				215E3287208DEBC000CAB24E /* PopUpUberLyft.swift in Sources */,
 				73B5E68E2089A14000FBE0F9 /* RidehistoryVC.swift in Sources */,
+				2158CBFB20C7C38300D6B949 /* NewHelpVC.swift in Sources */,
 				73B5E68D2089A14000FBE0F9 /* payoutVC.swift in Sources */,
 				73C2EA4D209B3F5600CF2E08 /* DefaultsHelper.swift in Sources */,
 				738E097620A57C6C001207BF /* DistanceMatrixResponse.swift in Sources */,

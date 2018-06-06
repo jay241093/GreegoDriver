@@ -1144,6 +1144,8 @@ struct _R: Rswift.Validatable {
       let mobilenumberViewController = StoryboardViewControllerResource<MobilenumberViewController>(identifier: "MobilenumberViewController")
       let name = "Main"
       let navigationSettings = StoryboardViewControllerResource<NavigationSettings>(identifier: "NavigationSettings")
+      let newHelpVC = StoryboardViewControllerResource<NewHelpVC>(identifier: "NewHelpVC")
+      let newTermVC = StoryboardViewControllerResource<NewTermVC>(identifier: "NewTermVC")
       let otpverificationViewController = StoryboardViewControllerResource<OtpverificationViewController>(identifier: "OtpverificationViewController")
       let paymentSettings = StoryboardViewControllerResource<PaymentSettings>(identifier: "PaymentSettings")
       let payoutVC = StoryboardViewControllerResource<payoutVC>(identifier: "payoutVC")
@@ -1246,6 +1248,14 @@ struct _R: Rswift.Validatable {
       
       func navigationSettings(_: Void = ()) -> NavigationSettings? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: navigationSettings)
+      }
+      
+      func newHelpVC(_: Void = ()) -> NewHelpVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: newHelpVC)
+      }
+      
+      func newTermVC(_: Void = ()) -> NewTermVC? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: newTermVC)
       }
       
       func otpverificationViewController(_: Void = ()) -> OtpverificationViewController? {
@@ -1402,11 +1412,13 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().popUpConfirmDropOff() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popUpConfirmDropOff' could not be loaded from storyboard 'Main' as 'PopUpConfirmDropOff'.") }
         if _R.storyboard.main().popUpTipDriver() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'popUpTipDriver' could not be loaded from storyboard 'Main' as 'PopUpTipDriver'.") }
         if _R.storyboard.main().paymentSettings() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'paymentSettings' could not be loaded from storyboard 'Main' as 'PaymentSettings'.") }
+        if _R.storyboard.main().newTermVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newTermVC' could not be loaded from storyboard 'Main' as 'NewTermVC'.") }
         if _R.storyboard.main().manageVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'manageVC' could not be loaded from storyboard 'Main' as 'ManageVC'.") }
         if _R.storyboard.main().emailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'emailViewController' could not be loaded from storyboard 'Main' as 'EmailViewController'.") }
         if _R.storyboard.main().driverpersonalinfoViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'driverpersonalinfoViewController' could not be loaded from storyboard 'Main' as 'DriverpersonalinfoViewController'.") }
         if _R.storyboard.main().expressPayVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'expressPayVC' could not be loaded from storyboard 'Main' as 'ExpressPayVC'.") }
         if _R.storyboard.main().helpVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'helpVC' could not be loaded from storyboard 'Main' as 'HelpVC'.") }
+        if _R.storyboard.main().newHelpVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'newHelpVC' could not be loaded from storyboard 'Main' as 'NewHelpVC'.") }
         if _R.storyboard.main().driverRatingVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'driverRatingVC' could not be loaded from storyboard 'Main' as 'DriverRatingVC'.") }
         if _R.storyboard.main().helprateVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'helprateVC' could not be loaded from storyboard 'Main' as 'HelprateVC'.") }
         if _R.storyboard.main().driverdocumentViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'driverdocumentViewController' could not be loaded from storyboard 'Main' as 'DriverdocumentViewController'.") }
