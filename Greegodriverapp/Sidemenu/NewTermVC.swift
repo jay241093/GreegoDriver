@@ -26,7 +26,7 @@ class NewTermVC: UIViewController {
     }
     @IBAction func back_action(_ sender: Any) {
         
-        
+       
         self.navigationController?.popViewController(animated: true)
         
     }

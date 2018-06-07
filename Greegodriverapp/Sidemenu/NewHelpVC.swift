@@ -32,21 +32,21 @@ class NewHelpVC: UIViewController,UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return triphisoryary.count
         
-       if(triphisoryary.count == 0)
-       {
-        
-        height.constant = 0
-        
-        }
-       else{
-        height.constant = 87
-
-        
-        
-        }
+ 
         
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RidehistoryVC") as! RidehistoryVC
+        
+        let dic: NSDictionary = self.triphisoryary.object(at: indexPath.row) as! NSDictionary
+        
+        nextViewController.driverdic = dic
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+        
+        
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
@@ -116,6 +116,18 @@ class NewHelpVC: UIViewController,UITableViewDelegate , UITableViewDataSource {
                             self.triphisoryary = new.mutableCopy() as! NSMutableArray
                             
                             self.tblview.reloadData()
+                            if(self.triphisoryary.count == 0)
+                            {
+                                
+                                self.height.constant = 0
+                                
+                            }
+                            else{
+                                self.height.constant = 100
+                                
+                                
+                                
+                            }
                           
                         }
                     }

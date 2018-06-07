@@ -3472,7 +3472,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sedan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aac-aQ-N5z">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sedan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aac-aQ-N5z">
                                 <rect key="frame" x="6" y="340" width="261" height="21"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -3502,7 +3502,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suv" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFu-6t-25B">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suv" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFu-6t-25B">
                                 <rect key="frame" x="6" y="372" width="261" height="21"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -3528,7 +3528,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Van" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-Vx-avE">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Van" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-Vx-avE">
                                 <rect key="frame" x="6" y="401" width="261" height="22"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -3548,7 +3548,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8b9-Qd-eet">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8b9-Qd-eet">
                                 <rect key="frame" x="6" y="458" width="261" height="22"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -3561,7 +3561,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIO-3c-05V">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIO-3c-05V">
                                 <rect key="frame" x="6" y="490" width="261" height="22"/>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.61960784310000006" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -3724,6 +3724,11 @@
                         <outlet property="lbl4" destination="wzQ-5x-3hK" id="ChD-RN-Pey"/>
                         <outlet property="lbl5" destination="MsZ-Mg-oa6" id="cmP-Vc-CDX"/>
                         <outlet property="lblReferCode" destination="MvS-7H-d23" id="VS4-QT-jGt"/>
+                        <outlet property="lblauto" destination="8b9-Qd-eet" id="c6B-Yv-6XS"/>
+                        <outlet property="lblmanual" destination="qIO-3c-05V" id="4uF-80-7SE"/>
+                        <outlet property="lblsedan" destination="Aac-aQ-N5z" id="WQv-w2-aO6"/>
+                        <outlet property="lblsuv" destination="IFu-6t-25B" id="f0r-8a-eAi"/>
+                        <outlet property="lblvan" destination="ikk-Vx-avE" id="KWd-cE-md4"/>
                         <outlet property="view1" destination="kK8-FS-0WM" id="2w1-HU-ECY"/>
                     </connections>
                 </viewController>
@@ -5723,7 +5728,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ns-BX-0ce">
-                                        <rect key="frame" x="18" y="40" width="236" height="32"/>
+                                        <rect key="frame" x="15" y="40" width="225" height="32"/>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="15"/>
                                         <state key="normal" title="1121121212121121211212@2018">
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -5735,10 +5740,9 @@
                                 <constraints>
                                     <constraint firstItem="zd2-Tf-CXi" firstAttribute="leading" secondItem="RwN-Cv-Xig" secondAttribute="leading" constant="14" id="DRK-sI-G3v"/>
                                     <constraint firstAttribute="bottom" secondItem="9Ns-BX-0ce" secondAttribute="bottom" constant="9" id="Nar-Wk-hp5"/>
+                                    <constraint firstItem="9Ns-BX-0ce" firstAttribute="leading" secondItem="zd2-Tf-CXi" secondAttribute="leading" constant="1" id="OMI-Yb-LT1"/>
                                     <constraint firstItem="9Ns-BX-0ce" firstAttribute="top" secondItem="zd2-Tf-CXi" secondAttribute="bottom" constant="3" id="U4R-a5-JiY"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Ns-BX-0ce" secondAttribute="trailing" constant="66" id="ex3-hu-tSR"/>
                                     <constraint firstItem="zd2-Tf-CXi" firstAttribute="top" secondItem="RwN-Cv-Xig" secondAttribute="top" constant="7" id="hxG-ja-l3h"/>
-                                    <constraint firstItem="9Ns-BX-0ce" firstAttribute="leading" secondItem="RwN-Cv-Xig" secondAttribute="leading" constant="18" id="nuy-aO-JRr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -5826,13 +5830,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Trip price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb0-BI-RWD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="248.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="72" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$ 0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDE-BT-U3I">
-                                                        <rect key="frame" x="248.5" y="0.0" width="39.5" height="20.5"/>
+                                                        <rect key="frame" x="72" y="0.0" width="216" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -7231,7 +7235,7 @@
                                     <constraint firstAttribute="height" constant="54" id="p9E-Z3-tVj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="20"/>
-                                <state key="normal" title="     How and when driver pay                  is calculated">
+                                <state key="normal" title=" How and when driver pay is calculated                  ">
                                     <color key="titleColor" red="0.0" green="0.56470588239999997" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -7257,7 +7261,7 @@
                                     <constraint firstAttribute="height" constant="51" id="mKH-Kh-aFw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="20"/>
-                                <state key="normal" title="      Report an accident, safety               incident, or citation">
+                                <state key="normal" title=" Report an accident, safety incident, or citation               ">
                                     <color key="titleColor" red="0.0" green="0.56470588239999997" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -7305,6 +7309,12 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btn1" destination="aZA-B0-Ce7" id="hCd-no-Sen"/>
+                        <outlet property="btn2" destination="pYZ-ST-2ql" id="xve-ix-HAY"/>
+                        <outlet property="btn3" destination="OSf-qr-Qxb" id="GWI-e2-Jol"/>
+                        <outlet property="btn4" destination="JUb-ed-xg2" id="2yX-d9-eEt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y1h-6c-m19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,10 +11,20 @@ import WebKit
 import Alamofire
 class HelpVC: UIViewController {
 
-   
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    
+    @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btn4: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        btn1.titleLabel?.textAlignment = .center
+        btn2.titleLabel?.textAlignment = .center
+        btn3.titleLabel?.textAlignment = .center
+        btn4.titleLabel?.textAlignment = .center
+
         // Do any additional setup after loading the view.
     }
 

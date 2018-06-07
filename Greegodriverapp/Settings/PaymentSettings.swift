@@ -23,7 +23,7 @@ class PaymentSettings: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        txtFRoutingNumber.text = routingNumber
+        txtFRoutingNumber.text =   "************" + String(routingNumber.suffix(3))
         
         let decodedData = Data(base64Encoded: AccountNumber)!
         let decodedString = String(data: decodedData, encoding: .utf8)!

@@ -14,6 +14,16 @@ import Alamofire
 import Kingfisher
 
 class ManageVC: UIViewController {
+ 
+    @IBOutlet weak var lblsedan: UILabel!
+    
+    @IBOutlet weak var lblsuv: UILabel!
+    
+    @IBOutlet weak var lblvan: UILabel!
+    
+    @IBOutlet weak var lblauto: UILabel!
+    
+    @IBOutlet weak var lblmanual: UILabel!
     
     @IBOutlet weak var view1: UILabel!
     
@@ -31,8 +41,47 @@ class ManageVC: UIViewController {
     @IBOutlet weak var btnOnOff: UIImageView!
 
     var isOnOffBtnON : Bool = true
+    
+    
+    
+  var issedan = 0
+  var issuv = 0
+  var isvan = 0
+  var isauto = 0
+  var ismanual = 0
+
+
+
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let T1 = UITapGestureRecognizer()
+
+        T1.addTarget(self, action: #selector(actionsedan))
+        lblsedan.addGestureRecognizer(T1)
+        
+        let T2 = UITapGestureRecognizer()
+        
+        T2.addTarget(self, action: #selector(actionsuv))
+        lblsuv.addGestureRecognizer(T2)
+        
+        let T3 = UITapGestureRecognizer()
+        
+        T3.addTarget(self, action: #selector(actionvan))
+        lblvan.addGestureRecognizer(T3)
+        
+        let T4 = UITapGestureRecognizer()
+        T4.addTarget(self, action: #selector(actionauto))
+        lblauto.addGestureRecognizer(T4)
+        
+        let T5 = UITapGestureRecognizer()
+        T5.addTarget(self, action: #selector(actionmanual))
+        lblmanual.addGestureRecognizer(T5)
+        
+        
+        
         
         
         let tap1 = UITapGestureRecognizer()
@@ -66,25 +115,135 @@ class ManageVC: UIViewController {
         imguser.addGestureRecognizer(tap)
         if revealViewController() != nil
         {
-            
-            //view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-            
-            //  viewFirstPopUp.isHidden = true
-            //  self.setShadow()
-            //   self.showFirstPopUp()
-            
-            
-            
+        
             
         }
         
         self.view.backgroundColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.0)
         
-        // setLeftView(textfield: txtmanual)
+      
+    }
+
+  @objc func actionsedan()
+  {
+    if(issedan == 0)
+    {
+        issedan = 1
+         checkdrivertype()
+        
+    }
+    else{
+        issedan = 0
+        checkdrivertype()
+    }
+    
+    
+    }
+    @objc func actionsuv()
+    {
+        if(issuv == 0)
+        {
+            issuv = 1
+            checkdrivertype()
+            
+        }
+        else{
+            issuv = 0
+            checkdrivertype()
+        }
         
         
-        // Do any additional setup after loading the view.
+    }
+    @objc func actionvan()
+    {
+        if(isvan == 0)
+        {
+            isvan = 1
+            checkdrivertype()
+            
+        }
+        else{
+            isvan = 0
+            checkdrivertype()
+        }
+        
+        
+    }
+    @objc func actionauto()
+    {
+        if(isauto == 0)
+    {
+        isauto = 1
+        checkdrivertype()
+        
+    }
+    else{
+        isauto = 0
+        checkdrivertype()
+        }
+      
+        
+    }
+    @objc func actionmanual()
+    {
+        if(ismanual == 0)
+        {
+            ismanual = 1
+            checkdrivertype()
+            
+        }
+        else{
+            ismanual = 0
+            checkdrivertype()
+        }
+        
+        
+    }
+    func checkdrivertype()
+    {
+        if AppDelegate.hasConnectivity() == true
+        {
+            StartSpinner()
+            
+            let token = UserDefaults.standard.value(forKey: "devicetoken") as! String
+            let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+            
+            let parameters = [
+                "is_sedan":issedan,
+                "is_suv": issuv,
+                "is_van": isvan,
+                "is_auto": isauto,
+                "is_manual": ismanual
+            ]
+            
+            Alamofire.request(WebServiceClass().BaseURL+"driver/update/drivertype", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
+                
+                switch(response.result) {
+                case .success(_):
+                    
+                    StopSpinner()
+                    if let data = response.result.value{
+                        //print(response.result.value!)
+                        self.checkuser()
+                      
+                    }
+                    break
+                    
+                case .failure(_):
+                    StopSpinner()
+                    
+                    print(response.result.error)
+                    break
+                    
+                }
+            }
+            
+        }
+        else
+        {
+            WebServiceClass().nointernetconnection()
+            NSLog("No Internet Connection")
+        }
     }
     
     
@@ -389,33 +548,64 @@ class ManageVC: UIViewController {
                             
                             if((typedic.value(forKey: "is_sedan") as? NSNumber) == 1)
                             {
-                                
+                                self.issedan = 1
                                 self.view1.isHidden = false
                                 
                             }
+                            else
+                            {
+                                self.issedan = 0
+                                self.view1.isHidden = true
+                            }
+                                
                             if((typedic.value(forKey: "is_suv") as? NSNumber) == 1)
                             {
+                                 self.issuv = 1
                                 self.lbl2.isHidden = false
                                 
                                 
                             }
+                            else
+                            {
+                                self.issuv = 0
+                                self.lbl2.isHidden = true
+                            }
                             if((typedic.value(forKey: "is_van") as? NSNumber) == 1)
                             {
+                                self.isvan = 1
                                 self.lbl3.isHidden = false
                                 
                                 
                             }
+                            else
+                            {
+                                self.isvan = 0
+                                self.lbl3.isHidden = true
+                            }
                             if((typedic.value(forKey: "is_auto") as? NSNumber) == 1)
                             {
                                 
+                                self.isauto = 1
+
                                 self.lbl4.isHidden = false
                                 
                             }
+                            else
+                            {
+                                self.isauto = 0
+                                self.lbl4.isHidden = true
+                            }
                             if((typedic.value(forKey: "is_manual") as? NSNumber) == 1)
                             {
+                                self.ismanual = 1
                                 self.lbl5.isHidden = false
                                 
                                 
+                            }
+                            else
+                            {
+                                self.ismanual = 0
+                                self.lbl5.isHidden = true
                             }
                             
                         }
