@@ -42,6 +42,7 @@ class ManageVC: UIViewController {
 
     var isOnOffBtnON : Bool = true
     
+    @IBOutlet weak var btnshare: UIButton!
     
     
   var issedan = 0
@@ -279,9 +280,11 @@ class ManageVC: UIViewController {
         super.viewDidAppear(true)
         if let driverme = DriverMe{
             if let promo = driverme.data.promocode{
+             btnshare.isEnabled = true
                 lblReferCode.text = "Your Code is \(promo.uppercased())"
             }else{
-                lblReferCode.text = "Loading..."
+                btnshare.isEnabled = false
+                lblReferCode.text = "Promotions coming soon"
             }
         }
         
@@ -321,7 +324,7 @@ class ManageVC: UIViewController {
             
             if let promo = driverme.data.promocode{
                 
-                shareText = "Come Drive with Greego.Use my promo code \(promo) to get $150"
+                shareText = "Greego driver promo code is\(promo)"
                 let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
                 present(vc, animated: true)
                 

@@ -81,7 +81,7 @@ class EditProfileVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
                 if resp.errorCode == 0{
                     print("Update Successfull")
                     print(resp)
-                    let alert = AlertBuilder(title: "Greego", message: "Profile Updated Sucessfully")
+                    let alert = AlertBuilder(title: "Greego", message: "Profile updated sucessfully")
                     self.present(alert, animated: true, completion: nil)
                 }
                 
@@ -89,7 +89,9 @@ class EditProfileVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
                 StopSpinner()
                 print(err.localizedDescription)
                 print("Could not  get Rates from state")
-                let alert = AlertBuilder(title: "oops", message: "Could Not Update Profile details")
+                let alert = AlertBuilder(title: "oops", message: "Could not update profile details")
+                self.present(alert, animated: true, completion: nil)
+
             }
         }
     }

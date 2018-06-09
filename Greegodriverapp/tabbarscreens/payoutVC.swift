@@ -48,7 +48,7 @@ class payoutVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         let finalcost = actualamount! + tip
         
         
-        cell.lblcost.text =  "$ " + String(finalcost)
+        cell.lblcost.text =  "$ " + String(format:"%.2f", finalcost)
         
         if(dic.value(forKey: "paid_type") as! NSNumber == 0)
         {
@@ -93,7 +93,6 @@ class payoutVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                         
                         
                         StopSpinner()
-                        StopSpinner()
                         
                         
                         let dic: NSDictionary =  response.result.value! as! NSDictionary
@@ -116,6 +115,12 @@ class payoutVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                            else{
                             self.tblview.reloadData()
                             }
+                        }
+                        else
+                        {
+                            let alert = AlertBuilder(title: "Greego", message: "No payout details found")
+                            self.present(alert, animated: true, completion: nil)
+                            
                         }
                     }
                     break

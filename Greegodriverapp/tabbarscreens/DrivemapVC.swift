@@ -198,28 +198,28 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         switch currentProfileStatus {
         case 1:
             btnprofilecheck.isHidden = true
-            lblstatus.text = "Your profile is 14% incomplete"
+            lblstatus.text = "Your profile is 14% complete"
             shouldOpenUpdateView = true
             
         case 2:
             btnprofilecheck.isHidden = true
-            lblstatus.text = "Your profile is  28% incomplete"
+            lblstatus.text = "Your profile is  28% complete"
             shouldOpenUpdateView = true
         case 3:
             btnprofilecheck.isHidden = true
-            lblstatus.text = "Your profile is 42% incomplete"
+            lblstatus.text = "Your profile is 42% complete"
             shouldOpenUpdateView = true
         case 4:
             btnprofilecheck.isHidden = true
-            lblstatus.text = "Your profile is  56% incomplete"
+            lblstatus.text = "Your profile is  56% complete"
             shouldOpenUpdateView = true
         case 5:
             btnprofilecheck.isHidden = true
-            lblstatus.text = "Your profile is  70% incomplete"
+            lblstatus.text = "Your profile is  70% complete"
             shouldOpenUpdateView = true
         case 6:
             btnprofilecheck.isHidden = true
-            lblstatus.text = "Your profile is 84% incomplete"
+            lblstatus.text = "Your profile is 84% complete"
             shouldOpenUpdateView = true
 
         case 7:

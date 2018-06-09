@@ -13,6 +13,7 @@ import Kingfisher
 import SwiftyUserDefaults
 import SVProgressHUD
 import Alamofire
+import SwiftyJSON
 
 
 class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
@@ -68,7 +69,8 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        NotificationCenter.default.addObserver(self, selector:  #selector(AcceptRequest), name: NSNotification.Name(rawValue: "Acceptnotification"), object: nil)
+
         getDriverInfoAndUpdateThisView()
         
         if Defaults[.isOnOffBtnON]{
@@ -84,6 +86,35 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
         let resource = ImageResource(downloadURL: URL(string: image)!)
         
         imguser.kf.setImage(with: resource, placeholder: UIImage(named:"download"), options: nil, progressBlock:nil, completionHandler: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Acceptnotification"), object: nil)
+
+        
+    }
+    @objc func AcceptRequest(note:Notification)
+    {
+        //close the sidebar if already open
+        
+        if reveal.frontViewPosition == FrontViewPosition.right {
+            reveal.revealToggle(animated: true)
+            
+        }
+        
+        let jsonObj = JSON(note.userInfo!)
+        
+        let  requestID = jsonObj["request_id"].intValue
+        print("received a request====\(requestID)")
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let RequestDriverViewController = storyBoard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
+        
+        RequestDriverViewController.requestID = requestID
+        self.navigationController?.pushViewController(RequestDriverViewController, animated: true)
         
     }
     
@@ -111,7 +142,7 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                         if self.isOnOffBtnON {
                             self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
                             self.isOnOffBtnON = false
-                            Defaults[.isOnOffBtnON] = false
+                         Defaults[.isOnOffBtnON] = false
                             
                             
                         }else {
@@ -406,11 +437,17 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                 
                 
                 dvc.lbltime.text = hou + ":" + min + ":" + second
-                
+                dvc.lblday.text = "Today"
+                dvc.lblnumrides.text = String(todayary.count)
             }
-            
-            dvc.lblday.text = "Today"
-            dvc.lblnumrides.text = String(todayary.count)
+            else
+            {
+                dvc.lblday.text = "Today"
+                dvc.lblnumrides.text = "0"
+                 dvc.lblamount.text = "$0"
+                dvc.lbltime.text =  "00:00:00"
+            }
+           
             
         }
         if(indexPath.row == 1)
@@ -480,12 +517,19 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                 if (second.characters.count < 2) {
                     second = "0" + second;
                 }
-                dvc.lblamount.text =   "$ " + String(format:"%f", cost)
+                dvc.lblamount.text =   "$ " + String(format:"%.2f", cost)
                 dvc.lbltime.text = hou + ":" + min + ":" + second
                 dvc.lblnumrides.text = String(self.finaldateary.count)
                 
                 
               
+            }
+            
+            else
+            {
+                dvc.lblnumrides.text = "0"
+                dvc.lblamount.text = "$0"
+                dvc.lbltime.text =  "00:00:00"
             }
             
             dvc.lblday.text = "Weekly"
@@ -540,6 +584,12 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
                             
                             
                            let new = ary.reversed() as! NSArray
+                            if(self.triphisoryary.count > 0)
+                            {
+                                
+                               self.triphisoryary.removeAllObjects()
+                            }
+                            
                             self.triphisoryary = new.mutableCopy() as! NSMutableArray
                             
                             self.tblview.reloadData()
@@ -662,12 +712,23 @@ class EarningVC: UIViewController, UITableViewDelegate , UITableViewDataSource,U
     
     
     @IBAction func btnGetpaid(_ sender: UIButton) {
+     
+  if(lblBalanceAmmount.text != "$0")
+  {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpressPayVC") as! ExpressPayVC
         
         vc.payoutAmmount = totalcost
         self.navigationController?.pushViewController(vc, animated: true)
     
+        }
+else
+  {
     
+let alert = AlertBuilder(title:"", message: "Sorry you have no balance to payout")
+    self.present(alert, animated: true, completion: nil)
+    
+    
+        }
         
         
     }

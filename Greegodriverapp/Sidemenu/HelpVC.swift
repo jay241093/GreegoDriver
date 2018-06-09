@@ -34,8 +34,12 @@ class HelpVC: UIViewController {
     }
     
     @IBAction func back_action(_ sender: Any) {
-     self.navigationController?.popViewController(animated: true)
-
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+        
+        
     }
    
     

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
+  - Bugsnag (5.15.5)
   - CTCheckbox (0.0.5)
   - EVReflection (5.6.1):
     - EVReflection/Core (= 5.6.1)
@@ -15,10 +16,10 @@ PODS:
   - FirebaseAnalytics (5.0.0):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseCore (5.0.0):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (3.0.0):
     - FirebaseCore (~> 5.0)
   - FirebaseMessaging (3.0.0):
@@ -37,7 +38,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.4)
   - GoogleToolboxForMac/Logger (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - IQKeyboardManagerSwift (6.0.3)
   - Kingfisher (4.7.0)
@@ -63,6 +64,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `alamofire5`)
+  - Bugsnag
   - CTCheckbox
   - EVReflection
   - Firebase/Core
@@ -83,35 +85,6 @@ DEPENDENCIES:
   - SwiftyUserDefaults
   - Toucan
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - CTCheckbox
-    - EVReflection
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseInstanceID
-    - FirebaseMessaging
-    - FloatRatingView
-    - GoogleMaps
-    - GooglePlaces
-    - GoogleToolboxForMac
-    - IQKeyboardManagerSwift
-    - Kingfisher
-    - nanopb
-    - PKHUD
-    - Protobuf
-    - R.swift
-    - R.swift.Library
-    - Stripe
-    - SVPinView
-    - SVProgressHUD
-    - SwiftCop
-    - SwiftLocation
-    - SwiftyJSON
-    - SwiftyUserDefaults
-    - Toucan
-
 EXTERNAL SOURCES:
   Alamofire:
     :branch: alamofire5
@@ -124,6 +97,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 8dc618ab9e6a26d9d77559e4c35e59e56451e69e
+  Bugsnag: 82788750cec86630828bb7dd250943f8356c53ea
   CTCheckbox: fec0e51c635ad555effd230a1fa186105010a382
   EVReflection: d05ebbafc851b7a4cd3d625182662463a5819ab8
   Firebase: 4bd804448ab2596794698773d41520a0af101e65
@@ -151,6 +125,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: 76cf199ec251dea311f08e77cf20e4e5d76a5a07
+PODFILE CHECKSUM: b07a7c4bdc782989295e9c04f68833b0bc68b5fb
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

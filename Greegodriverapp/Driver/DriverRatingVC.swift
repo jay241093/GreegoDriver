@@ -31,7 +31,7 @@ class DriverRatingVC: UIViewController,FloatRatingViewDelegate,tipthedriverProto
     var tipAmmount = 0.0
     var totalCost = 0.0
     var profilepicString = ""
-    var currentRating:Float = 0.0
+    var currentRating:Float = 5.0
     
     override func viewDidLoad() {
         super.viewDidLoad()

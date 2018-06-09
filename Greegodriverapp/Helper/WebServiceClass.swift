@@ -11,9 +11,9 @@ import UIKit
 class WebServiceClass: NSObject
 {
     
+let BaseURL = "http://54.144.110.21/api/"
+//let BaseURL = "http://kroslinkstech.in/greego/public/api/"
 //let BaseURL = "http://54.144.110.21/api/"
-let BaseURL = "http://kroslinkstech.in/greego/public/api/"
-// let BaseURL = "http://54.144.110.21/api/"
     static let sharedInstance : WebServiceClass = {
         let instance = WebServiceClass()
         return instance

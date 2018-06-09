@@ -89,7 +89,7 @@ class UpdateEmailVC: UIViewController {
         }
         else
         {
- StopSpinner()
+            StopSpinner()
             WebServiceClass().nointernetconnection()
             
             NSLog("No Internet Connection")

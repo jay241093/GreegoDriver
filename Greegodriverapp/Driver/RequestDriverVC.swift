@@ -75,6 +75,11 @@ var requestDetailsResponse:RequestDetailsResponse?
 class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,comfirmm,ConfirmDropOffDelegate,popUpNavigateProtocol,callPopUpProtocol{
     
     
+    var timer1  = Timer()
+    var timer2  = Timer()
+
+    
+    var firstupdate = 0
     //MARK:- IBOutlet
     
     @IBOutlet weak var lblAddress: UILabel!
@@ -166,6 +171,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         imgProfilePicOnButton.layer.cornerRadius = imgProfilePicOnButton.frame.size.width / 2
         imgProfilePicOnButton.layer.masksToBounds = true
         
+        timer1.invalidate()
         StopSpinner()
         
     }
@@ -214,8 +220,21 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             case .success(let resp):
                 requestDetailsResponse = resp
                 print("received response from requestid  : \(resp)")
+                
+            
+                
                 self.updateUiUsingData(data: resp)
                 
+                if(self.firstupdate == 0)
+                {
+                  //  self.firstupdate = 1
+                self.timer1 = Timer.scheduledTimer(timeInterval: 10, target: self, selector:#selector(self.updatepath), userInfo: nil, repeats: true)
+                }
+                else
+                {
+                    self.timer1.invalidate()
+
+                }
             case .failure(let err):
                 print(err)
                 StopSpinner()
@@ -227,6 +246,22 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
     
  var tolat = Double()
     var tolng = Double()
+    
+    var fromlat = Double()
+    var fromlong = Double()
+    
+    @objc func updatepath()
+    {
+//        self.drawPath(originLat: locationManager.location!.coordinate.latitude, originLong: locationManager.location!.coordinate.longitude, destLat: (requestDetailsResponse?.data.body.fromLat)!, destLong: (requestDetailsResponse?.data.body.fromLng)!)
+        
+    }
+    @objc func updatepath1()
+    {
+//        self.drawPath(originLat: locationManager.location!.coordinate.latitude, originLong: locationManager.location!.coordinate.longitude, destLat: tolat, destLong:tolng)
+        
+    }
+    
+    
 
     func updateUiUsingData(data:RequestDetailsResponse){
         
@@ -236,14 +271,15 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         userMobileNumber = data.data.body.user.contactNumber
         lblAddress.text = data.data.body.fromAddress
         currentAddressText = data.data.body.toAddress
-       
+     
+        lblRating.text = data.data.average_user_rating
+        print(data.data.average_user_rating)
         tolat = data.data.body.toLat
         tolng = data.data.body.toLng
 
-        lblETA.text = "\(data.data.body.totalEstimatedTravelTime) Min Away"
+        lblETA.text = "\(data.data.body.totalEstimatedTravelTime)  Away"
         lblNameOfUser.text = data.data.body.user.name
         //TODO: Rating is not availible in response
-        lblRating.text = "5.0"
         lblCarName.text = "\(data.data.vehicleYear)" + " " + data.data.vehicelName +  " " + "\(data.data.vehicelModel)" +  " " + data.data.vehicleColor
         //set profile img
         print(data.data.body.user.profilePic!)
@@ -254,6 +290,10 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
       //  imgProfilePicOnButton.kf.setImage(with: imgUrlResource)
         
         imgProfilePicOnButton.kf.setImage(with: imgUrlResource, placeholder: UIImage(named: "default-user"), options: nil, progressBlock: nil)
+
+        
+        self.fromlat = data.data.body.fromLat
+        self.fromlong = data.data.body.fromLng
 
         self.destCord = CLLocationCoordinate2D(latitude: data.data.body.toLat, longitude: data.data.body.toLng)
         
@@ -283,7 +323,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
     
     func drawPath(originLat:Double,originLong:Double,destLat:Double,destLong:Double)
     {
-        StartSpinner()
+       // StartSpinner()
         
         
         let originCoord = CLLocationCoordinate2D(latitude: originLat, longitude: originLong)
@@ -309,8 +349,11 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
 //            let boundsouthlat = json["routes"].arrayValue[0]["bounds"]["southwest"]["lat"].doubleValue
 //            let boundsouthlong = json["routes"].arrayValue[0]["bounds"]["southwest"]["long"].doubleValue
 
-            
+         
+          
             //fit two points on map
+            
+             self.mapView.clear()
             var bounds = GMSCoordinateBounds()
             
             bounds = bounds.includingCoordinate(originCoord)
@@ -326,9 +369,16 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             destMarker.icon = #imageLiteral(resourceName: "Start-pin.png")
             destMarker.map = self.mapView
             sourceMarker.map = self.mapView
-            
+           
+        
             for route in routes
             {
+                let legs = route["legs"]
+                
+                let firstLeg = legs[0]
+                let firstLegDurationDict = firstLeg["duration"]
+                let firstLegDuration = firstLegDurationDict["text"]
+                self.lblETA.text = String(describing: firstLegDuration) + " away"
                 let routeOverviewPolyline = route["overview_polyline"].dictionary
                 let points = routeOverviewPolyline?["points"]?.stringValue
                 let path = GMSPath.init(fromEncodedPath: points!)
@@ -338,7 +388,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
                 polyline.map = self.mapView
             }
             
-            StopSpinner()
+           // StopSpinner()
         }
     }
     //Basic Setup
@@ -411,6 +461,22 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         let location = locations.last
         self.sourceCord = CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
 
+      if let res = requestDetailsResponse
+      {
+        
+        if(firstupdate == 0)
+        {
+          self.drawPath(originLat: self.sourceCord.latitude, originLong: self.sourceCord.longitude, destLat: fromlat, destLong:fromlong)
+        }
+        else
+        {
+            if(tolat != nil)
+            {
+            drawPath(originLat:self.sourceCord.latitude, originLong: self.sourceCord.longitude, destLat: tolat, destLong: tolng)
+
+            }
+        }
+        }
         
         
 //        DispatchQueue.main.async {
@@ -473,9 +539,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         if (sender.titleLabel?.text?.starts(with: "Tap"))!{
             timer.invalidate()
             AcceptBeADriverRequest()
-            
-            
-            
+        
         }
         else if (sender.titleLabel?.text?.starts(with: "Arr"))!{
             
@@ -498,7 +562,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             let popUpNavigateVC = self.storyboard?.instantiateViewController(withIdentifier: "popUpNavigate") as! popUpNavigate
             self.addChildViewController(popUpNavigateVC)
             
-            
+              self.firstupdate = 1
             if(Defaults[.SelectedNavigationAppKey] ==  0)
             {
             googleUrl = URL(string: "comgooglemaps://?saddr=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&daddr=\(tolat),\(tolng)&directionsmode=driving")
@@ -513,6 +577,14 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             {
          googleUrl = URL(string:"http://maps.apple.com/?saddr=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&daddr=\(tolat),\(tolng)")!
             }
+           
+           
+        
+            self.timer1.invalidate()
+            self.timer2 = Timer.scheduledTimer(timeInterval: 10, target: self, selector:#selector(self.updatepath1), userInfo: nil, repeats: true)
+
+
+
             drawPath(originLat: (locationManager.location?.coordinate.latitude)!, originLong: (locationManager.location?.coordinate.longitude)!, destLat: tolat, destLong: tolng)
             popUpNavigateVC.view.frame = self.view.frame
             popUpNavigateVC.delegate = self
@@ -534,6 +606,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             //make call to update status
             
             //show pop
+            timer2.invalidate()
             let popOverConfirmVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUpConfirmDropOff") as! PopUpConfirmDropOff
             self.addChildViewController(popOverConfirmVC)
             popOverConfirmVC.view.frame = self.view.frame

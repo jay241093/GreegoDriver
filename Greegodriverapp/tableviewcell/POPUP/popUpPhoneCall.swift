@@ -36,6 +36,7 @@ class popUpPhoneCall: UIViewController {
     @IBAction func btnYesCall(_ sender: Any) {
         
         delegate?.tappedCallBtn()
+        removeAnimate()
         
     }
     

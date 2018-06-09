@@ -19,6 +19,7 @@ target 'Greegodriverapp' do
     pod 'Toucan'
     pod 'R.swift'
     pod 'PKHUD'
+    pod 'Bugsnag'
 #    pod 'SwifterSwift'            # All Extensions
 #    pod 'SwifterSwift/Foundation' # Foundation Extensions
 #    pod 'SwifterSwift/UIKit'      # UIKit Extensions

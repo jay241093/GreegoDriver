@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8AAB35EF0EF2CC9415018FF4A4B89179'
-               BlueprintName = 'Pods-GreegodriverappUITests'
+               BlueprintIdentifier = 'E3E05C82485EAA406AF3C652BA2DA7CD'
+               BlueprintName = 'Bugsnag'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-GreegodriverappUITests.framework'>
+               BuildableName = 'Bugsnag.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

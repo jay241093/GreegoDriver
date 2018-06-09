@@ -24,6 +24,8 @@ public struct dataa: Codable {
     public let vehicelModel, vehicelName: String
     public let vehicleYear: Int
     public let vehicleColor: String
+    public let average_user_rating: String
+
     
     enum CodingKeys: String, CodingKey {
         case body
@@ -31,6 +33,8 @@ public struct dataa: Codable {
         case vehicelName = "vehicel_name"
         case vehicleYear = "vehicle_year"
         case vehicleColor = "vehicle_color"
+        case average_user_rating = "average_user_rating"
+
     }
 }
 

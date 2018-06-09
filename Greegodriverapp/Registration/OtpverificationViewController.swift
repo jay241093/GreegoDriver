@@ -136,8 +136,7 @@ class OtpverificationViewController: UIViewController {
                 "is_iphone": "1",
                 "user_type": "driver",
                 "device_id":Defaults[.fcmTokenkey]
-
-            ]
+    ]
             
             Alamofire.request(WebServiceClass().BaseURL+"login", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
                 

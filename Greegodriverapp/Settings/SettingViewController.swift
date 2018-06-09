@@ -78,7 +78,7 @@ class SettingViewController: UIViewController,navigationSettingsDelegate {
     var requestID  = 0
     override func viewDidDisappear(_ animated: Bool) {
         //received notification
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Acceptnotification"), object: nil)
+        //NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Acceptnotification"), object: nil)
         //NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Approved"), object: nil)
 
         
@@ -121,6 +121,16 @@ class SettingViewController: UIViewController,navigationSettingsDelegate {
             lblEmailID.text = "\(driverMe.data.email!)"
             lblPhoneNumber.text = "\(driverMe.data.contactNumber!)"
             lblEmailVerified.text = driverMe.data.email_verifed! == 1 ? "Verified" : "Not Verified"
+            
+            if(driverMe.data.email_verifed! == 1)
+            {
+              emailview.isUserInteractionEnabled = false
+            }
+            else
+            {
+                 emailview.isUserInteractionEnabled = true
+                
+            }
             
             
             if let profStr = driverMe.data.profilePic{

@@ -53,8 +53,19 @@ class DriverbankViewController: UIViewController,UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             
         }
+        else if((txtroutnum.text?.characters.count)! < 2){
+            let alert = UIAlertController(title: nil, message: "Please enter correct routing number", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+       
         else if(txtaccountnum.text == ""){
             let alert = UIAlertController(title: nil, message: "Please enter account number", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if((txtaccountnum.text?.characters.count)! < 10){
+            let alert = UIAlertController(title: nil, message: "Please enter correct account number", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -165,6 +176,32 @@ class DriverbankViewController: UIViewController,UITextFieldDelegate {
             NSLog("No Internet Connection")
         }
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if(textField == txtroutnum)
+        {
+            let maxLength = 9
+            let currentString: NSString = txtroutnum.text as! NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+            
+        }
+        else if(textField == txtaccountnum)
+        {
+            let maxLength = 16
+            let currentString: NSString = txtaccountnum.text as! NSString
+            let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+            return newString.length <= maxLength
+            
+        }
+        
+        
+        
+        return true
+    }
+    
     
     
     override func didReceiveMemoryWarning() {

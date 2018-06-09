@@ -14,7 +14,8 @@ import SwiftyJSON
 import MapKit
 
 class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
-
+    @IBOutlet weak var lbltip: UILabel!
+    
     @IBOutlet weak var lblfinltotal: UILabel!
     @IBOutlet weak var lbltotal: UILabel!
     @IBOutlet weak var lbldistance: UILabel!
@@ -45,7 +46,7 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   
+   print(driverdic)
        var distance = driverdic.value(forKey:"actual_trip_miles") as? Double
         var time = driverdic.value(forKey:"total_estimated_travel_time") as? String
         var transaction_id = driverdic.value(forKey:"transaction_id") as? String
@@ -53,11 +54,11 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
 
         if let id = transaction_id
         {
-        lblreciptno.text = "Recipt No # : (" + transaction_id! + ")"
+        lblreciptno.text = "Receipt No # : (" + transaction_id! + ")"
         }
         else
         {
-            lblreciptno.text = "Recipt No # : ()"
+            lblreciptno.text = "Receipt No # : ()"
 
         }
         lbldistance.text =  String(format: "%.2f",distance!) + " miles ," + time! + "min"
@@ -109,11 +110,15 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
         
         self.drawPath(sourceCord: source, destCord: destination)
         
-        let amoount = driverdic.value(forKey:"total_estimated_trip_cost") as? Double
+        let amoount = driverdic.value(forKey:"actual_trip_amount") as? Double
+         let tipamount = driverdic.value(forKey:"tip_amount") as? Double
         
+        
+        lbltotal.text =  "$ " +  String(format: "%.2f",amoount!)
         if let id = amoount
         {
-        lbltotal.text =  "$ " +  String(format: "%.2f",amoount!)
+            // lbltotal.text =  "$ " +  String(format: "%.2f",amoount!)
+        
         }
         else
         {
@@ -164,9 +169,13 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
                 var greegofee =  (amoount! * rateResponse.data.greegoFee!) / 100
                 
                 self.lblgreegofees.text = "- $ " + String(format: "%.2f",greegofee)
-                var cost = self.driverdic.value(forKey:"total_estimated_trip_cost") as! Double
+                var cost = self.driverdic.value(forKey:"actual_trip_amount") as! Double
+                let tipamount = self.driverdic.value(forKey:"tip_amount") as? Double
+
+                self.lbltip.text = "+ $ " + String(format: "%.2f",tipamount!)
+
+                var total =  cost + tipamount! - greegofee
                 
-           var total =  cost - greegofee
                 
             self.lblfinltotal.text =  "$ " + String(format: "%.2f",total)
                 }

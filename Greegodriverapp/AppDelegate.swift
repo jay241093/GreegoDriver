@@ -18,7 +18,7 @@ import Rswift
 import SwiftyJSON
 import Stripe
 import FirebaseMessaging
-
+import Bugsnag
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
 
+        Bugsnag.start(withApiKey: "05f4f3a3580c0c58df6c0b721a34b5b6")
+
+        
         if UIApplication.shared.canOpenURL(URL(string: "waze://")!){
             print("found Waze")
             Defaults[.iswazeInstalled] = true

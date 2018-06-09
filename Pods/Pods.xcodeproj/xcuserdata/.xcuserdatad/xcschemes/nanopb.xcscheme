@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '06729BBAC61930DA2AD1054DFEB7D1FC'
-               BlueprintName = 'Pods-GreegodriverappTests'
+               BlueprintIdentifier = 'E4DD95323C54A78F879DAB0F1508B8E7'
+               BlueprintName = 'nanopb'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-GreegodriverappTests.framework'>
+               BuildableName = 'nanopb.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
