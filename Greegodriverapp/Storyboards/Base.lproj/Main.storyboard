@@ -4846,13 +4846,13 @@
                                 <rect key="frame" x="55" y="169" width="210" height="230"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This user is already taken by other driver." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5X-ad-H6e">
-                                        <rect key="frame" x="20" y="30" width="170" height="140"/>
+                                        <rect key="frame" x="20" y="13" width="170" height="140"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HoX-RZ-67h">
-                                        <rect key="frame" x="35" y="180" width="140" height="50"/>
+                                        <rect key="frame" x="35" y="163" width="140" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MDm-ww-4RH"/>
@@ -4872,10 +4872,10 @@
                                     <constraint firstAttribute="width" constant="210" id="SuE-ni-38z"/>
                                     <constraint firstItem="HoX-RZ-67h" firstAttribute="top" secondItem="P5X-ad-H6e" secondAttribute="bottom" constant="10" id="TeB-9S-XPC"/>
                                     <constraint firstAttribute="height" constant="230" id="V13-XT-faG"/>
-                                    <constraint firstItem="P5X-ad-H6e" firstAttribute="top" secondItem="Sgl-5P-yJf" secondAttribute="top" constant="30" id="VDF-sX-jyH"/>
+                                    <constraint firstItem="P5X-ad-H6e" firstAttribute="top" secondItem="Sgl-5P-yJf" secondAttribute="top" constant="13" id="VDF-sX-jyH"/>
                                     <constraint firstAttribute="trailing" secondItem="P5X-ad-H6e" secondAttribute="trailing" constant="20" id="XMs-HP-Mqj"/>
                                     <constraint firstItem="HoX-RZ-67h" firstAttribute="centerX" secondItem="Sgl-5P-yJf" secondAttribute="centerX" id="eX8-zZ-SRt"/>
-                                    <constraint firstAttribute="bottom" secondItem="HoX-RZ-67h" secondAttribute="bottom" id="zRx-0H-05a"/>
+                                    <constraint firstAttribute="bottom" secondItem="HoX-RZ-67h" secondAttribute="bottom" constant="17" id="zRx-0H-05a"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4889,7 +4889,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gkg-pO-Saf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159" y="3423"/>
+            <point key="canvasLocation" x="-159.375" y="3422.5352112676055"/>
         </scene>
         <!--popUpConfirmArrival-->
         <scene sceneID="WOf-VE-zES">
@@ -5819,14 +5819,14 @@
         <scene sceneID="yce-pS-tD5">
             <objects>
                 <viewController storyboardIdentifier="DriverRatingVC" title="DriverRatingVC" id="AZD-mI-P1b" customClass="DriverRatingVC" customModule="Greegodriverapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GUE-oo-MZF">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="GUE-oo-MZF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUe-NV-DvI">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUe-NV-DvI">
                                 <rect key="frame" x="0.0" y="-99" width="320" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greego" translatesAutoresizingMaskIntoConstraints="NO" id="Sqp-HL-0ZA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="greego" translatesAutoresizingMaskIntoConstraints="NO" id="Sqp-HL-0ZA">
                                         <rect key="frame" x="68.5" y="22" width="183" height="56"/>
                                     </imageView>
                                 </subviews>
@@ -5837,13 +5837,13 @@
                                     <constraint firstItem="Sqp-HL-0ZA" firstAttribute="centerY" secondItem="rUe-NV-DvI" secondAttribute="centerY" id="p1W-7h-mDS"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-jK-MAM">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-jK-MAM">
                                 <rect key="frame" x="0.0" y="1" width="320" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 69" translatesAutoresizingMaskIntoConstraints="NO" id="Ekk-dL-NZJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Rectangle 69" translatesAutoresizingMaskIntoConstraints="NO" id="Ekk-dL-NZJ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-mn-beN">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-mn-beN">
                                         <rect key="frame" x="103" y="19" width="288" height="92"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcq-UY-vIw">
@@ -5887,14 +5887,14 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yT7-K4-x5Q">
                                                 <rect key="frame" x="0.0" y="71.5" width="288" height="20.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Total cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSs-wk-ZQY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="74.5" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSs-wk-ZQY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$ 0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aq4-xn-qbp">
-                                                        <rect key="frame" x="74.5" y="0.0" width="213.5" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aq4-xn-qbp">
+                                                        <rect key="frame" x="50" y="0.0" width="238" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -5917,29 +5917,29 @@
                                     <constraint firstItem="ftt-mn-beN" firstAttribute="top" secondItem="PnI-jK-MAM" secondAttribute="top" constant="4" id="xIa-H6-Rgq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-2Z-0dc">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-2Z-0dc">
                                 <rect key="frame" x="0.0" y="101" width="320" height="367"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="a47-Xj-tX6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="a47-Xj-tX6">
                                         <rect key="frame" x="84.5" y="4" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="fsG-H4-q3G"/>
                                             <constraint firstAttribute="width" constant="150" id="yuy-LE-EQD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ0-4I-6ha">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Awesome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ0-4I-6ha">
                                         <rect key="frame" x="112" y="154" width="96.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll never be matched with a  user you rate 3 stars or below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-pc-DVT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You'll never be matched with a  user you rate 3 stars or below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-pc-DVT">
                                         <rect key="frame" x="20" y="301.5" width="280" height="45.5"/>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1S-BEk" customClass="FloatRatingView" customModule="FloatRatingView">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1S-BEk" customClass="FloatRatingView" customModule="FloatRatingView">
                                         <rect key="frame" x="20" y="198.5" width="280" height="75"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
@@ -5974,7 +5974,7 @@
                                     <constraint firstItem="ogp-1S-BEk" firstAttribute="leading" secondItem="42Y-2Z-0dc" secondAttribute="leading" constant="20" id="wUI-GI-ell"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dx-4P-AS9">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dx-4P-AS9">
                                 <rect key="frame" x="0.0" y="468" width="320" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0H7-uJ-b8r"/>

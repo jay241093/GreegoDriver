@@ -72,7 +72,8 @@ func getRateswithState(state:String,completion:@escaping (StateRateResponse)->Vo
 
 var requestDetailsResponse:RequestDetailsResponse?
 
-class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,comfirmm,ConfirmDropOffDelegate,popUpNavigateProtocol,callPopUpProtocol{
+class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,comfirmm,ConfirmDropOffDelegate,popUpNavigateProtocol,callPopUpProtocol,CloseActionDelegate{
+   
     
     
     var timer1  = Timer()
@@ -184,7 +185,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
     }
     
     @objc func TripCanceled(note:Notification){
-        let alert2 = UIAlertController(title: "oops", message: "The Trip was Canceled", preferredStyle: .alert)
+        let alert2 = UIAlertController(title: "oops", message: "The Trip was cancelled by user", preferredStyle: .alert)
         let OkAction = UIAlertAction(title: "OK", style: .default) { (action) in
             Defaults[.CurrentTripIDKey] = 0
             self.navigationController?.popViewController(animated: true)
@@ -440,7 +441,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         }
         else if seconds > 60 {
             self.lblCountDown.text = "\(seconds / 60):\(seconds % 60)"
-
+            
         }else {
             self.lblCountDown.text = "\(seconds)"
 
@@ -899,6 +900,14 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
             dest.profilepicString = userprofileImageString
         }
     }
+    func yesAction(_ bool: Bool) {
+        Defaults[.CurrentTripIDKey] = 0
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func NoAction(_ bool: Bool) {
+        
+    }
     
     //Make network call to accept request
     func AcceptBeADriverRequest(){
@@ -946,19 +955,31 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
                     
                 case .failure(let err):
                     print(err)
+                    
                     StopSpinner()
-                    // pop and say something happened
-                    let alert2 = UIAlertController(title: "oops", message: "This user is already taken by other driver.", preferredStyle: .alert)
-                    let OkAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                        // goahed and remove trip related dat
-
-                        Defaults[.CurrentTripIDKey] = 0
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                    alert2.addAction(OkAction)
-                    self.present(alert2, animated: true) {
-                        
-                    }
+                    let popOverCallVC = self.storyboard?.instantiateViewController(withIdentifier: "popUpNoUser") as! popUpNoUser
+                    popOverCallVC.delegate = self
+                    self.addChildViewController(popOverCallVC)
+                    popOverCallVC.view.frame = self.view.frame
+                    self.view.center = popOverCallVC.view.center
+                    self.view.addSubview(popOverCallVC.view)
+                    popOverCallVC.didMove(toParentViewController: self)
+                    
+                    
+                    
+//                    StopSpinner()
+//                    // pop and say something happened
+//                    let alert2 = UIAlertController(title: "oops", message: "This user is already taken by other driver.", preferredStyle: .alert)
+//                    let OkAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                        // goahed and remove trip related dat
+//
+//                        Defaults[.CurrentTripIDKey] = 0
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+//                    alert2.addAction(OkAction)
+//                    self.present(alert2, animated: true) {
+//
+//                    }
                     
                 }
             }

@@ -45,7 +45,7 @@ class DriverRatingVC: UIViewController,FloatRatingViewDelegate,tipthedriverProto
     
     override func viewDidAppear(_ animated: Bool) {
         lblAmmount.text = String(format: "$ %.2f", tripAmmount)
-         lblTotalAmmount.text = String(format: "$ %.2f", tripAmmount)
+         lblTotalAmmount.text = ""
         profileimageView.layer.cornerRadius = profileimageView.frame.size.width / 2
         profileimageView.layer.masksToBounds = true
         
