@@ -658,7 +658,8 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         
         
         getGetDistancebtwnCordinates(Sourcecoord: sourceCord, destCoord: destCord) { (duration,distance) in
-            self.totalTripDistance = distance
+            
+            self.totalTripDistance = distance * 0.621371
             self.getStateNamefromCoord(coord: self.sourceCord) { (stateName) in
                 self.getRateswithState(state: stateName, completion: { (rateResponse) in
                     

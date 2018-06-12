@@ -208,11 +208,14 @@ class ExpressPayVC: UIViewController ,CLLocationManagerDelegate{
             var totalamount = payoutAmmount - greegoamount - Exfees
             
             // print(txtmobilenumber.text!)
+            
+            
             let parmm:Parameters = ["pay_amount":totalamount,
                                     "driver_id":Defaults[.Driverid]
             ]
             let token = Defaults[.deviceTokenKey]
             let headers = ["Accept": "application/json","Authorization": "Bearer " + token]
+            print(headers)
             
             Alamofire.request(WebServiceClass().BaseURL + "driver/express/pay", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON { (response:DataResponse<Any>) in
                 

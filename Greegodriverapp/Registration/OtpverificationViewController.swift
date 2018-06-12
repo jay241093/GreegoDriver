@@ -132,7 +132,7 @@ class OtpverificationViewController: UIViewController {
             StartSpinner()
 
             let parameters = [
-                "contact_number":"+1"+strmobileno!,
+                "contact_number":"+91"+strmobileno!,
                 "is_iphone": "1",
                 "user_type": "driver",
                 "device_id":Defaults[.fcmTokenkey]

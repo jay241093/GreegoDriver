@@ -4440,24 +4440,24 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ndh-1J-21Q">
                                                         <rect key="frame" x="77" y="0.0" width="195" height="71"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vFG-O1-U8m">
-                                                                <rect key="frame" x="20" y="0.0" width="155" height="41"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vFG-O1-U8m">
+                                                                <rect key="frame" x="28.5" y="0.0" width="138" height="41"/>
                                                                 <fontDescription key="fontDescription" name="SegoeUI-Bold" family="Segoe UI" pointSize="30"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="MuW-6j-auk">
-                                                                <rect key="frame" x="58" y="41" width="79.5" height="30"/>
+                                                                <rect key="frame" x="57.5" y="41" width="80" height="30"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star-PNG-Image" translatesAutoresizingMaskIntoConstraints="NO" id="Ebe-Lk-l41">
-                                                                        <rect key="frame" x="0.5" y="0.0" width="30" height="30"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="7j8-3j-wiG"/>
                                                                             <constraint firstAttribute="width" constant="30" id="ljB-2S-Dpk"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ew6-eX-daU">
-                                                                        <rect key="frame" x="46.5" y="0.0" width="33.5" height="30"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ew6-eX-daU">
+                                                                        <rect key="frame" x="46" y="0.0" width="34" height="30"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -4468,7 +4468,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017 Lexux RX 350 White" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfh-l1-ndg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfh-l1-ndg">
                                                 <rect key="frame" x="27" y="75" width="234" height="27"/>
                                                 <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="21"/>
                                                 <nil key="textColor"/>
@@ -5819,14 +5819,14 @@
         <scene sceneID="yce-pS-tD5">
             <objects>
                 <viewController storyboardIdentifier="DriverRatingVC" title="DriverRatingVC" id="AZD-mI-P1b" customClass="DriverRatingVC" customModule="Greegodriverapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="GUE-oo-MZF">
+                    <view key="view" contentMode="scaleToFill" id="GUE-oo-MZF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUe-NV-DvI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUe-NV-DvI">
                                 <rect key="frame" x="0.0" y="-99" width="320" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="greego" translatesAutoresizingMaskIntoConstraints="NO" id="Sqp-HL-0ZA">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greego" translatesAutoresizingMaskIntoConstraints="NO" id="Sqp-HL-0ZA">
                                         <rect key="frame" x="68.5" y="22" width="183" height="56"/>
                                     </imageView>
                                 </subviews>
@@ -5837,13 +5837,13 @@
                                     <constraint firstItem="Sqp-HL-0ZA" firstAttribute="centerY" secondItem="rUe-NV-DvI" secondAttribute="centerY" id="p1W-7h-mDS"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-jK-MAM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-jK-MAM">
                                 <rect key="frame" x="0.0" y="1" width="320" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Rectangle 69" translatesAutoresizingMaskIntoConstraints="NO" id="Ekk-dL-NZJ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 69" translatesAutoresizingMaskIntoConstraints="NO" id="Ekk-dL-NZJ">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-mn-beN">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ftt-mn-beN">
                                         <rect key="frame" x="103" y="19" width="288" height="92"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcq-UY-vIw">
@@ -5917,29 +5917,29 @@
                                     <constraint firstItem="ftt-mn-beN" firstAttribute="top" secondItem="PnI-jK-MAM" secondAttribute="top" constant="4" id="xIa-H6-Rgq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-2Z-0dc">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-2Z-0dc">
                                 <rect key="frame" x="0.0" y="101" width="320" height="367"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="a47-Xj-tX6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="a47-Xj-tX6">
                                         <rect key="frame" x="84.5" y="4" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="fsG-H4-q3G"/>
                                             <constraint firstAttribute="width" constant="150" id="yuy-LE-EQD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Awesome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ0-4I-6ha">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ0-4I-6ha">
                                         <rect key="frame" x="112" y="154" width="96.5" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You'll never be matched with a  user you rate 3 stars or below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-pc-DVT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll never be matched with a  user you rate 3 stars or below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elv-pc-DVT">
                                         <rect key="frame" x="20" y="301.5" width="280" height="45.5"/>
                                         <fontDescription key="fontDescription" name="SegoeUI" family="Segoe UI" pointSize="17"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1S-BEk" customClass="FloatRatingView" customModule="FloatRatingView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-1S-BEk" customClass="FloatRatingView" customModule="FloatRatingView">
                                         <rect key="frame" x="20" y="198.5" width="280" height="75"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
@@ -5974,7 +5974,7 @@
                                     <constraint firstItem="ogp-1S-BEk" firstAttribute="leading" secondItem="42Y-2Z-0dc" secondAttribute="leading" constant="20" id="wUI-GI-ell"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dx-4P-AS9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dx-4P-AS9">
                                 <rect key="frame" x="0.0" y="468" width="320" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0H7-uJ-b8r"/>
@@ -6145,9 +6145,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALC-hW-IvQ">
-                                                <rect key="frame" x="17" y="250" width="74" height="21"/>
+                                                <rect key="frame" x="17" y="250" width="111" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="74" id="1Re-cD-M2Q"/>
+                                                    <constraint firstAttribute="width" constant="111" id="1Re-cD-M2Q"/>
                                                     <constraint firstAttribute="height" constant="21" id="Kwj-0O-CzQ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SegoeUI-BoldItalic" family="Segoe UI" pointSize="17"/>
