@@ -113,7 +113,7 @@ class EditProfileVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        var image = info[UIImagePickerControllerEditedImage] as! UIImage
 
         profileImageView.image = image
         
@@ -191,6 +191,8 @@ class EditProfileVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
     {
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
+        myPickerController.allowsEditing = true
+
         myPickerController.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(myPickerController, animated: true, completion: nil)
@@ -202,6 +204,8 @@ class EditProfileVC: UIViewController,UIImagePickerControllerDelegate,UINavigati
         
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
+        myPickerController.allowsEditing = true
+
         myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(myPickerController, animated: true, completion: nil)

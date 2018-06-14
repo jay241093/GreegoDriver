@@ -43,6 +43,7 @@ class DriverprofileViewController: UIViewController,UIImagePickerControllerDeleg
     {
         var myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
+        myPickerController.allowsEditing = true
         myPickerController.sourceType = UIImagePickerControllerSourceType.camera
         
         self.present(myPickerController, animated: true, completion: nil)
@@ -54,6 +55,7 @@ class DriverprofileViewController: UIViewController,UIImagePickerControllerDeleg
         
         var myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
+        myPickerController.allowsEditing = true
         myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(myPickerController, animated: true, completion: nil)
@@ -83,7 +85,7 @@ class DriverprofileViewController: UIViewController,UIImagePickerControllerDeleg
    
         
         
-   var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+   var image = info[UIImagePickerControllerEditedImage] as! UIImage
         
         if(self.checkimg == "0")
         {

@@ -219,45 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
             
         }
-        else if state == .background{
-            let newdic: String = ((dic.value(forKey:"aps") as! NSDictionary).value(forKey: "alert") as! NSDictionary).value(forKey: "body") as! String
-            
-            if(newdic.contains("approved"))
-            {
-                NotificationCenter.default.post(name: NSNotification.Name.init("Approved"), object: nil, userInfo: dic as! [AnyHashable : Any])
-                
-                
-            }
-            else if(newdic.contains("rejected"))
-            {
-                NotificationCenter.default.post(name: NSNotification.Name.init("Rejected"), object: nil, userInfo: dic as! [AnyHashable : Any])
-                
-                
-            }
-                
-            else if(newdic.contains("cancelled")){
-                print("Trip Canceled")
-                NotificationCenter.default.post(name: NSNotification.Name.init("cancelled"), object: nil, userInfo: dic as! [AnyHashable : Any])
-            }
-            else
-            {
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
-                let jsonObj = JSON(userInfo)
-                
-                
-                let  requestID = jsonObj["request_id"].intValue
-                initialViewController.requestID = requestID
-                navigationController.pushViewController(initialViewController, animated: true)
-                self.window?.rootViewController = navigationController
-                self.window?.makeKeyAndVisible()
-                
-                NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
-                
-            }
-        }
+        
             
         else if (state == .inactive)
         {

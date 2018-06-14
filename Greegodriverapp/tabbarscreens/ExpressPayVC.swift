@@ -208,9 +208,12 @@ class ExpressPayVC: UIViewController ,CLLocationManagerDelegate{
             var totalamount = payoutAmmount - greegoamount - Exfees
             
             // print(txtmobilenumber.text!)
+            let doubleStr = String(format: "%.2f", totalamount) // "3.14"
+
+            let numstr = doubleStr as! NSString
+            var finalamount = numstr.doubleValue
             
-            
-            let parmm:Parameters = ["pay_amount":totalamount,
+            let parmm:Parameters = ["pay_amount":finalamount,
                                     "driver_id":Defaults[.Driverid]
             ]
             let token = Defaults[.deviceTokenKey]
@@ -260,7 +263,9 @@ class ExpressPayVC: UIViewController ,CLLocationManagerDelegate{
                     }
                     
                 case .failure(let err):
-                    StopSpinner()
+                    let alert = AlertBuilder(title:"", message:"Something went wrong ,please try again later")
+                    self.present(alert, animated: true, completion: nil)
+
                     print(err.localizedDescription)
                     StopSpinner()
                     

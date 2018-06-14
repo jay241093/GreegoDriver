@@ -149,7 +149,7 @@ class DriverdocumentViewController: UIViewController,UIImagePickerControllerDele
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        var image = info[UIImagePickerControllerEditedImage] as! UIImage
         
         
         if(self.checkimg == "0")
