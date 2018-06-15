@@ -16,7 +16,7 @@ func getGetDistancebtwnCordinates(Sourcecoord:CLLocationCoordinate2D,destCoord:C
 StartSpinner()
     let origin = "\(Sourcecoord.latitude),\(Sourcecoord.longitude)"
     let destination = "\(destCoord.latitude),\(destCoord.longitude)"
-    let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyDuLTaJL-tMzdBoTZtCQfCz4m66iEZ1eQc"
+    let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&units=imperial&key=AIzaSyDuLTaJL-tMzdBoTZtCQfCz4m66iEZ1eQc"
     
     Alamofire.request(url).responseJSON { response in
         print(response.request ?? "")  // original URL request

@@ -307,8 +307,6 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         {
               googleUrl = URL(string: "https://waze.com/ul?ll=\(data.data.body.fromLat),\(data.data.body.fromLng)&navigate=yes")
        
-
-            
         }
         else
         {
@@ -659,7 +657,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         
         getGetDistancebtwnCordinates(Sourcecoord: sourceCord, destCoord: destCord) { (duration,distance) in
             
-            self.totalTripDistance = distance * 0.621371
+            self.totalTripDistance = distance
             self.getStateNamefromCoord(coord: self.sourceCord) { (stateName) in
                 self.getRateswithState(state: stateName, completion: { (rateResponse) in
                     
@@ -727,7 +725,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         var parmm :Parameters = [:]
         
         if status == 4 {
-            actualTripPrice = Double(stateRates!.data.baseFee!) + (tripTimeInterval! / 60) * (stateRates?.data.timeFee)! + Double(totalTripDistance!) * Double(stateRates!.data.mileFee!)
+            actualTripPrice = Double(stateRates!.data.baseFee!) + (tripTimeInterval!) * ((stateRates?.data.timeFee)!/60) + Double(totalTripDistance!) * Double(stateRates!.data.mileFee!)
             print("Total Time Interval \(tripTimeInterval)")
             parmm = [
                 "trip_id": Defaults[.CurrentTripIDKey],
