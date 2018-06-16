@@ -133,7 +133,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
     var userprofileImageString = ""
     var estimatedAmmount = 0.0
     let viewWithProfImgWidthConstant : CGFloat = 51.13
-    
+    var backgroundTaskIdentifier : UIBackgroundTaskIdentifier?
     var tripStartTime:Date?
     var tripEndTime:Date?
     var tripTimeInterval : Double?
@@ -148,6 +148,9 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         super.viewDidLoad()
         self.setupUI()
         
+        backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier!)
+        })
         //
         print(Defaults[.deviceTokenKey])
         
@@ -298,6 +301,8 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
 
         self.destCord = CLLocationCoordinate2D(latitude: data.data.body.toLat, longitude: data.data.body.toLng)
         
+        print(locationManager.location!.coordinate.latitude)
+        print(data.data.body.fromLat)
         self.drawPath(originLat: locationManager.location!.coordinate.latitude, originLong: locationManager.location!.coordinate.longitude, destLat: data.data.body.fromLat, destLong: data.data.body.fromLng)
         if(Defaults[.SelectedNavigationAppKey] ==  0)
         {
@@ -409,6 +414,8 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.startUpdatingLocation()
+        self.locationManager.allowsBackgroundLocationUpdates = true
+
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.isMyLocationEnabled = true
         
