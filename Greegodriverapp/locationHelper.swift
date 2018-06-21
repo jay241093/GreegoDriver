@@ -51,13 +51,39 @@ StartSpinner()
                 
                 let firstLegDistanceDict = firstLeg["distance"]
                 let firstLegDistance = firstLegDistanceDict["text"]
-                let strDistance = firstLegDistance.doubleValue
-                completion(strDuration,strDistance)
+                
+                  var strDistance = String(describing: firstLegDistance)
+                print(strDistance)
+                var strDis = strDistance.components(separatedBy: " ").first as! String
+                var distance = Double()
+                if(strDistance.components(separatedBy: " ")[1] == "ft")
+                {
+                    strDis = strDis.replacingOccurrences(of: ",", with:"", options: NSString.CompareOptions.literal, range: nil)
+                    
+                    let Dis = strDis  as NSString
+                    distance = Dis.doubleValue * 0.000189394
+                    completion(strDuration,distance)
+
+                }
+                else
+                {
+                    strDis = strDis.replacingOccurrences(of: ",", with:"", options: NSString.CompareOptions.literal, range: nil)
+                    
+                    let Dis = strDis  as NSString
+                    distance = Dis.doubleValue
+                    completion(strDuration,distance)
+
+                }
+                
+                
+                
+                
                 
                 var bounds = GMSCoordinateBounds()
                                 
                 let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
                 
+             
                 
                 
                 

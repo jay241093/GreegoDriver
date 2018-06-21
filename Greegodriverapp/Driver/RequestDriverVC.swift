@@ -241,6 +241,8 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
                 }
             case .failure(let err):
                 print(err)
+                self.getDataAboutRequestAndPopulateIt(request: self.self.requestID)
+
                 StopSpinner()
                 
             }
@@ -542,6 +544,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
     
     
     @IBAction func TapToBeaDriver(_ sender: UIButton) {
+         self.locationManager.allowsBackgroundLocationUpdates = false
         if (sender.titleLabel?.text?.starts(with: "Tap"))!{
             timer.invalidate()
             AcceptBeADriverRequest()

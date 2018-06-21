@@ -99,6 +99,39 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         let alert2 = UIAlertController(title: "Congratulations", message: "Your Driver Application is Approved", preferredStyle: .alert)
         let OkAction = UIAlertAction(title: "OK", style: .default) { (action) in
             self.viewDidAppear(false)
+            var parmm:Parameters = [:]
+
+            parmm = [
+                "driver_on":1,
+            ]
+            let token = Defaults[.deviceTokenKey]
+            let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+            
+            Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
+                switch response.result{
+                case .success(let resp):
+                    //print(resp)
+                  
+                        self.btnOnOff.image = #imageLiteral(resourceName: "OFF")
+                        self.isOnOffBtnON = false
+                        Defaults[.isOnOffBtnON] = false
+                        
+                        
+                    
+                case .failure(let err):
+                    print(err)
+                    print("Failed to change ")
+                    let alert = AlertBuilder(title: "OOps", message: "Unable to Change Driver Status \n Try Again")
+                    self.present(alert, animated: true, completion: nil)
+                    StopSpinner()
+                    
+                    
+                }
+                
+             
+            }
+            
+            
         }
         
         alert2.addAction(OkAction)
@@ -119,30 +152,50 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
     
     @objc func AcceptRequest(note:Notification)
     {
-        AudioServicesPlayAlertSound(SystemSoundID(1322))
-
-        //close the sidebar if already open
         
-//        if reveal.frontViewPosition == FrontViewPosition.right {
-//            reveal.revealToggle(animated: true)
-//
-//        }
-       if reveal.frontViewPosition == FrontViewPosition.right {
-        reveal.revealToggle(animated: true)
-
+        if reveal.frontViewPosition == FrontViewPosition.right {
+            reveal.revealToggle(animated: true)
+            
         }
-            let jsonObj = JSON(note.userInfo!)
+        if let wd = UIApplication.shared.delegate?.window {
+            var vc = wd!.rootViewController
+            if(vc is UINavigationController){
+                vc = (vc as! UINavigationController).visibleViewController
+                
+            }
+            
+            if(vc is RequestDriverVC){
+                //your code
+            }
+            else
+            {
+                AudioServicesPlayAlertSound(SystemSoundID(1322))
+                
+                //close the sidebar if already open
+                
+                //        if reveal.frontViewPosition == FrontViewPosition.right {
+                //            reveal.revealToggle(animated: true)
+                //
+                //        }
+                
+                let jsonObj = JSON(note.userInfo!)
+                
+                //        if jsonObj["request_id"] as Int !=
+                
+                let  requestID = jsonObj["request_id"].intValue
+                print("received a request====\(requestID)")
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let RequestDriverViewController = storyBoard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
+                RequestDriverViewController.requestID = requestID
+                self.navigationController?.pushViewController(RequestDriverViewController, animated: true)
+                
+            }
+        }
         
-        //        if jsonObj["request_id"] as Int !=
         
-        let  requestID = jsonObj["request_id"].intValue
-        print("received a request====\(requestID)")
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let RequestDriverViewController = storyBoard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
-        RequestDriverViewController.requestID = requestID
-        self.navigationController?.pushViewController(RequestDriverViewController, animated: true)
+     
         
     }
     
@@ -562,6 +615,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -735,7 +789,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         
         
         self.userMapView.settings.myLocationButton = true
-        locationManager.stopUpdatingLocation()
+      //  locationManager.stopUpdatingLocation()
     }
     
     func moveMapCameratoCurrent(coord:CLLocationCoordinate2D){

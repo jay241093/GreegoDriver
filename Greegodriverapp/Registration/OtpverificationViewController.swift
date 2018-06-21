@@ -132,7 +132,7 @@ class OtpverificationViewController: UIViewController {
             StartSpinner()
 
             let parameters = [
-                "contact_number":"+91"+strmobileno!,
+                "contact_number":"+1"+strmobileno!,
                 "is_iphone": "1",
                 "user_type": "driver",
                 "device_id":Defaults[.fcmTokenkey]
@@ -259,6 +259,8 @@ class OtpverificationViewController: UIViewController {
                             else
                            
                             {
+                                
+                                self.changedriverstatus()
                                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                                 
                                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
@@ -294,6 +296,54 @@ class OtpverificationViewController: UIViewController {
         }
         
     }
+    
+    
+ func changedriverstatus()
+ {
+
+    StartSpinner()
+
+    
+    var parmm:Parameters = [:]
+    
+    parmm = [
+        "driver_on":1,
+    ]
+    let token = Defaults[.deviceTokenKey]
+    let headers = ["Accept": "application/json","Authorization": "Bearer "+token]
+    
+    Alamofire.request(WebServiceClass().BaseURL + "driver/update/device", method: .post, parameters: parmm, encoding: JSONEncoding.default, headers: headers).responseJSON{ (response:DataResponse<Any>) in
+        switch response.result{
+          case .success(let resp):
+            //print(resp)
+           
+            StopSpinner()
+
+                Defaults[.isOnOffBtnON] = false
+                
+        
+                
+            
+        case .failure(let err):
+        StopSpinner()
+
+            print(err)
+            print("Failed to change ")
+            let alert = AlertBuilder(title: "OOps", message: "Unable to Change Driver Status \n Try Again")
+            self.present(alert, animated: true, completion: nil)
+            StopSpinner()
+            
+            
+        }
+        
+    }
+        
+        //
+        
+        
+        
+    }
+    
     
         
   

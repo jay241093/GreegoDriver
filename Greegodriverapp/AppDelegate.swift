@@ -24,7 +24,8 @@ import Bugsnag
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
     
     var window: UIWindow?
-    
+    var bgtask = UIBackgroundTaskIdentifier(0)
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
@@ -81,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                         self.window?.makeKeyAndVisible()
                         
                         
-                        NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+                      //  NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
                         
                     }
                     
@@ -182,40 +183,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
             
             
-            let newdic: String = ((dic.value(forKey:"aps") as! NSDictionary).value(forKey: "alert") as! NSDictionary).value(forKey: "body") as! String
-            
-            if(newdic.contains("approved"))
-            {
-                NotificationCenter.default.post(name: NSNotification.Name.init("Approved"), object: nil, userInfo: dic as! [AnyHashable : Any])
-            }else if(newdic.contains("cancelled")){
-                print("Trip Canceled")
-                NotificationCenter.default.post(name: NSNotification.Name.init("cancelled"), object: nil, userInfo: dic as! [AnyHashable : Any])
-            }
-            else
-            {
-                
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
-//                let initialViewController = storyboard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
+//            let newdic: String = ((dic.value(forKey:"aps") as! NSDictionary).value(forKey: "alert") as! NSDictionary).value(forKey: "body") as! String
 //
-//                let jsonObj = JSON(userInfo)
+//            if(newdic.contains("approved"))
+//            {
+//                NotificationCenter.default.post(name: NSNotification.Name.init("Approved"), object: nil, userInfo: dic as! [AnyHashable : Any])
+//            }else if(newdic.contains("cancelled")){
+//                print("Trip Canceled")
+//                NotificationCenter.default.post(name: NSNotification.Name.init("cancelled"), object: nil, userInfo: dic as! [AnyHashable : Any])
+//            }
+//            else
+//            {
 //
-//                //        if jsonObj["request_id"] as Int !=
+////                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+////                let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+////                let initialViewController = storyboard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
+////
+////                let jsonObj = JSON(userInfo)
+////
+////                //        if jsonObj["request_id"] as Int !=
+////
+////                let  requestID = jsonObj["request_id"].intValue
+////                initialViewController.requestID = requestID
+////                navigationController.pushViewController(initialViewController, animated: true)
+////                self.window?.rootViewController = navigationController
+////                self.window?.makeKeyAndVisible()
 //
-//                let  requestID = jsonObj["request_id"].intValue
-//                initialViewController.requestID = requestID
-//                navigationController.pushViewController(initialViewController, animated: true)
-//                self.window?.rootViewController = navigationController
-//                self.window?.makeKeyAndVisible()
-                
-                
-                NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
-                
-            }
-            
-            
-            
-            
+//
+//                NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+//
+//            }
+//
+//
+//
+//
             
             
         }
@@ -258,7 +259,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 //                self.window?.rootViewController = navigationController
 //                self.window?.makeKeyAndVisible()
 
-              //  NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+            NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
 
             }
 
@@ -267,7 +268,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
     }
    
-    
+
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         //****************// receiving remote notification
@@ -517,6 +518,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        
+        bgtask = application.beginBackgroundTask(expirationHandler: {
+            self.bgtask = UIBackgroundTaskInvalid
+        })
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
