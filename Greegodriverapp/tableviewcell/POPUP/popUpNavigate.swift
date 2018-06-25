@@ -60,7 +60,7 @@ class popUpNavigate: UIViewController {
         
         
         self.lblAddress.text = addressText
-        self.lblDropOffUser.text = "Drop Off \(nameOfUser)"
+        self.lblDropOffUser.text = " \(nameOfUser)"
         let imgresource = ImageResource(downloadURL: URL(string: imageUrlString)!)
       //  imgViewUserProfilepic.kf.setImage(with: imgresource)
         imgViewUserProfilepic.kf.setImage(with: imgresource, placeholder: UIImage(named: "default-user"), options: nil, progressBlock: nil)

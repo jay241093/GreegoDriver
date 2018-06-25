@@ -105,6 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
+            setCategories()
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
@@ -129,19 +130,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Override point for customization after application launch.
         return true
     }
-    
+    func setCategories(){
+        let snoozeAction = UNNotificationAction(
+            identifier: "snooze.action",
+            title: "View",
+            options: [.foreground])
+        
+        
+        let rejectFriendRequest = UNNotificationAction(identifier: "rejectFriendRequest", title: "Reject", options: [.destructive])
+
+        
+        let pizzaCategory = UNNotificationCategory(
+            identifier: "action.new_request",
+            actions: [snoozeAction,rejectFriendRequest],
+            intentIdentifiers: [],
+            options: [])
+        UNUserNotificationCenter.current().setNotificationCategories(
+            [pizzaCategory])
+        
+    }
     
     class noti: EVObject {
         var aps: String = ""
         var request_id: Int = 0
     }
     
+  
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+
+        print(userInfo)
+        let action = response.actionIdentifier
+        let request = response.notification.request
+        let content = request.content
+        if action == "snooze.action"{
+           
+
+    
+            NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+           
+        }
+        completionHandler()
+    }
+    
+    
+  var requestjson = JSON()
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         completionHandler(.newData)
 
         print(userInfo)
         let json = JSON(userInfo)
+    requestjson = JSON(userInfo)
         print("as json")
         print(json)
         print("as Dictionary")
@@ -150,6 +192,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let state:UIApplicationState = application.applicationState
         
         let dic: NSDictionary = userInfo as NSDictionary
+        
+          var timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(removenotification), userInfo: nil, repeats: false)
+        
+   
+        
         if(state == .active)
             
         {
@@ -268,6 +315,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
     }
    
+    
+   @objc func removenotification()
+   {
+    
+    let center = UNUserNotificationCenter.current()
+    center.removeAllDeliveredNotifications()
+    
+    }
 
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
