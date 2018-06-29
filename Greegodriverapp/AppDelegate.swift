@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     var window: UIWindow?
     var bgtask = UIBackgroundTaskIdentifier(0)
 
+    var Appliction: UIApplication?
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
@@ -77,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                         
                         let  requestID = jsonObj["request_id"].intValue
                         initialViewController.requestID = requestID
+                        initialViewController.isformnotification = 1
+
                         navigationController.pushViewController(initialViewController, animated: true)
                         self.window?.rootViewController = navigationController
                         self.window?.makeKeyAndVisible()
@@ -166,10 +170,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let request = response.notification.request
         let content = request.content
         if action == "snooze.action"{
-           
+            let state:UIApplicationState = Appliction!.applicationState
+
+            
+            if(state == .inactive)
+            {
 
     
             NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+              
+            }
+           else if(state == .background)
+            {
+                
+                NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as! UINavigationController
+//                let initialViewController = storyboard.instantiateViewController(withIdentifier: "RequestDriverVC") as! RequestDriverVC
+//
+//                let jsonObj = JSON(userInfo)
+//
+//                //        if jsonObj["request_id"] as Int !=
+//
+//                let  requestID = jsonObj["request_id"].intValue
+//                initialViewController.requestID = requestID
+//                navigationController.pushViewController(initialViewController, animated: true)
+//                self.window?.rootViewController = navigationController
+//                self.window?.makeKeyAndVisible()
+                
+            }
            
         }
         completionHandler()
@@ -226,6 +256,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
             
         else if state == .background{
+            
+            let newdic: String = ((dic.value(forKey:"aps") as! NSDictionary).value(forKey: "alert") as! NSDictionary).value(forKey: "body") as! String
+            
+            if(newdic.contains("approved"))
+            {
+                NotificationCenter.default.post(name: NSNotification.Name.init("Approved"), object: nil, userInfo: dic as! [AnyHashable : Any])
+                
+                
+            }
+            else if(newdic.contains("rejected"))
+            {
+                NotificationCenter.default.post(name: NSNotification.Name.init("Rejected"), object: nil, userInfo: dic as! [AnyHashable : Any])
+                
+                
+            }
+            else if(newdic.contains("cancelled")){
+                print("Trip Canceled")
+                NotificationCenter.default.post(name: NSNotification.Name.init("cancelled"), object: nil, userInfo: dic as! [AnyHashable : Any])
+            }
+            else
+            {
+            NotificationCenter.default.post(name: NSNotification.Name.init("Acceptnotification"), object: nil, userInfo: userInfo)
+            }
+
             //PUSH desired view and post notification
             
             

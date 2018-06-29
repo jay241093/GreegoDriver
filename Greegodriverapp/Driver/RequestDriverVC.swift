@@ -19,6 +19,7 @@ import Kingfisher
 func getStateNamefromCoord(coord:CLLocationCoordinate2D, completion:@escaping (String)->Void){
     
     let geocoder = GMSGeocoder()
+    
     geocoder.reverseGeocodeCoordinate(coord) { response , error in
         
         
@@ -75,7 +76,8 @@ var requestDetailsResponse:RequestDetailsResponse?
 class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,comfirmm,ConfirmDropOffDelegate,popUpNavigateProtocol,callPopUpProtocol,CloseActionDelegate{
    
     
-    
+    var isformnotification = 0
+
     var timer1  = Timer()
     var timer2  = Timer()
 
@@ -191,7 +193,19 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         let alert2 = UIAlertController(title: "oops", message: "The Trip was cancelled by user", preferredStyle: .alert)
         let OkAction = UIAlertAction(title: "OK", style: .default) { (action) in
             Defaults[.CurrentTripIDKey] = 0
+            
+            if(self.isformnotification == 1)
+            {
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+            }
+            else
+            {
             self.navigationController?.popViewController(animated: true)
+            }
         }
         
         alert2.addAction(OkAction)
@@ -229,18 +243,25 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
                 if(resp.errorCode == 1)
                 {
                     
-                    let popOverCallVC = self.storyboard?.instantiateViewController(withIdentifier: "popUpNoUser") as! popUpNoUser
-                    self.addChildViewController(popOverCallVC)
-                    popOverCallVC.view.frame = self.view.frame
-                    self.view.center = popOverCallVC.view.center
-                    self.view.addSubview(popOverCallVC.view)
-                    popOverCallVC.didMove(toParentViewController: self)
+                  
                     
                 }
                 else
                 {
                     self.updateUiUsingData(data: resp)
 
+                    if(resp.data.body.requestStatus == 1)
+                    {
+                        
+                        let popOverCallVC = self.storyboard?.instantiateViewController(withIdentifier: "popUpNoUser") as! popUpNoUser
+                        self.addChildViewController(popOverCallVC)
+                        popOverCallVC.view.frame = self.view.frame
+                        self.view.center = popOverCallVC.view.center
+                        self.view.addSubview(popOverCallVC.view)
+                        popOverCallVC.didMove(toParentViewController: self)
+                        
+                    }
+                    
                     
                 }
                 
@@ -256,7 +277,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
                 }
             case .failure(let err):
                 print(err)
-                self.getDataAboutRequestAndPopulateIt(request: self.self.requestID)
+                self.getDataAboutRequestAndPopulateIt(request:self.requestID)
 
                 StopSpinner()
                 
@@ -286,26 +307,26 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
 
     func updateUiUsingData(data:RequestDetailsResponse){
         
-        estimatedAmmount = (data.data.body?.totalEstimatedTripCost)!
-        userprofileImageString = (data.data.body?.user.profilePic!)!
-        nameOfUser = (data.data.body?.user.name)!
-        userMobileNumber = (data.data.body?.user.contactNumber)!
-        lblAddress.text = data.data.body?.fromAddress
-        currentAddressText = (data.data.body?.toAddress)!
+        estimatedAmmount = data.data.body.totalEstimatedTripCost
+        userprofileImageString = data.data.body.user.profilePic!
+        nameOfUser =  data.data.body.user.name
+        userMobileNumber = data.data.body.user.contactNumber
+        lblAddress.text = data.data.body.fromAddress
+        currentAddressText = data.data.body.toAddress
      
         lblRating.text = data.data.average_user_rating
         print(data.data.average_user_rating)
-        tolat = (data.data.body?.toLat)!
-        tolng = (data.data.body?.toLng)!
+        tolat =  data.data.body.toLat
+        tolng = data.data.body.toLng
 
-        lblETA.text = "\(data.data.body?.totalEstimatedTravelTime)  Away"
-        lblNameOfUser.text = data.data.body?.user.name
+        lblETA.text = "\(data.data.body.totalEstimatedTravelTime)  Away"
+        lblNameOfUser.text = data.data.body.user.name
         //TODO: Rating is not availible in response
         
-        lblCarName.text = "\(data.data.vehicleYear) " + data.data.vehicelName! +  " " + "\(data.data.vehicelModel) "  + data.data.vehicleColor!
+        lblCarName.text = "\(data.data.vehicleYear) " + data.data.vehicelName +  " " + "\(data.data.vehicelModel) "  + data.data.vehicleColor
         //set profile img
-        print(data.data.body?.user.profilePic!)
-        let imgUrlResource = ImageResource(downloadURL: URL(string: (data.data.body?.user.profilePic!)!)!)
+        print(data.data.body.user.profilePic!)
+        let imgUrlResource = ImageResource(downloadURL: URL(string: (data.data.body.user.profilePic!))!)
         imgProfilePic.kf.setImage(with: imgUrlResource, placeholder: UIImage(named:"default-user"), options: nil, progressBlock: nil) { (img, err, cache, url) in
             print(err)
         }
@@ -314,26 +335,25 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         imgProfilePicOnButton.kf.setImage(with: imgUrlResource, placeholder: UIImage(named: "default-user"), options: nil, progressBlock: nil)
 
         
-        self.fromlat = (data.data.body?.fromLat)!
-        self.fromlong = (data.data.body?.fromLng)!
+        self.fromlat = data.data.body.fromLat
+        self.fromlong = data.data.body.fromLng
 
-        self.destCord = CLLocationCoordinate2D(latitude: (data.data.body?.toLat)!, longitude: (data.data.body?.toLng)!)
+        self.destCord = CLLocationCoordinate2D(latitude: data.data.body.toLat, longitude: data.data.body.toLng)
         
-        print(locationManager.location!.coordinate.latitude)
-        print(data.data.body?.fromLat)
-        self.drawPath(originLat: locationManager.location!.coordinate.latitude, originLong: locationManager.location!.coordinate.longitude, destLat: (data.data.body?.fromLat)!, destLong: (data.data.body?.fromLng)!)
+        print(data.data.body.fromLat)
+        self.drawPath(originLat: locationManager.location!.coordinate.latitude, originLong: locationManager.location!.coordinate.longitude, destLat: (data.data.body.fromLat), destLong: (data.data.body.fromLng))
         if(Defaults[.SelectedNavigationAppKey] ==  0)
         {
-            googleUrl = URL(string: "comgooglemaps://?saddr=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&daddr=\(data.data.body?.fromLat),\(data.data.body?.fromLng)&directionsmode=driving")
+            googleUrl = URL(string: "comgooglemaps://?saddr=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&daddr=\(data.data.body.fromLat),\(data.data.body.fromLng)&directionsmode=driving")
         }
         else if(Defaults[.SelectedNavigationAppKey] ==  1)
         {
-              googleUrl = URL(string: "https://waze.com/ul?ll=\(data.data.body?.fromLat),\(data.data.body?.fromLng)&navigate=yes")
+              googleUrl = URL(string: "https://waze.com/ul?ll=\(data.data.body.fromLat),\(data.data.body.fromLng)&navigate=yes")
        
         }
         else
         {
-           googleUrl = URL(string:"http://maps.apple.com/?saddr=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&daddr=\(data.data.body?.fromLat),\(data.data.body?.fromLng)")!
+           googleUrl = URL(string:"http://maps.apple.com/?saddr=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&daddr=\(data.data.body.fromLat),\(data.data.body.fromLng)")!
             
         }
 
@@ -355,7 +375,7 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         let origin = "\(originLat),\(originLong)"
         let destination = "\(destLat),\(destLong)"
         
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyDuLTaJL-tMzdBoTZtCQfCz4m66iEZ1eQc"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyCQOE9aBk_Zzd6pmX4i394FR1xgO5nLrRk"
         
         Alamofire.request(url).responseJSON { response in
             print(response.request)  // original URL request
@@ -460,7 +480,17 @@ class RequestDriverVC: UIViewController,CLLocationManagerDelegate,GMSMapViewDele
         if seconds == 0{
             self.lblCountDown.isHidden = true
             timer.invalidate()
+            if(isformnotification == 1)
+            {
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+                self.navigationController?.pushViewController(nextViewController, animated: true)
+            }
+            else
+            {
             self.navigationController?.popViewController(animated: true)
+            }
         }
         else if seconds > 60 {
             self.lblCountDown.text = "\(seconds / 60):\(seconds % 60)"

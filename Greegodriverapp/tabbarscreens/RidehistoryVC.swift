@@ -198,7 +198,7 @@ class RidehistoryVC: UIViewController ,CLLocationManagerDelegate{
     {
         let origin = "\(sourceCord.latitude),\(sourceCord.longitude)"
         let destination = "\(destCord.latitude),\(destCord.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyDuLTaJL-tMzdBoTZtCQfCz4m66iEZ1eQc"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=driving&key=AIzaSyCQOE9aBk_Zzd6pmX4i394FR1xgO5nLrRk"
         
         Alamofire.request(url).responseJSON { response in
             print(response.request ?? "")  // original URL request

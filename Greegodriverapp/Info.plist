@@ -20,6 +20,14 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>lyft</string>
+		<string>uber</string>
+		<string>comgooglemaps</string>
+		<string>googlechromes</string>
+		<string>waze</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -28,13 +36,21 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>For Greego service, Let us to acess your camera for upload picture </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Let us receive your location in background to help you get customers</string>
+	<string>For Greego service, we may collect location data while using an app. This improves pickups,support, and more.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Let us to acess your photolibrary for upload picture into application</string>
 	<key>Privacy – Location Always Usage Description</key>
-	<string>Let us receive your location in background to help you get customers</string>
+	<string>For Greego service, we may collect location data while using an app. This improves pickups,support, and more.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>For Greego service, we may collect location data while using an app. This improves pickups,support, and more.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Segoe UI.ttf</string>
+		<string>segoe-ui-bold.ttf</string>
+		<string>seguisb.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -59,20 +75,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>lyft</string>
-		<string>uber</string>
-		<string>comgooglemaps</string>
-		<string>googlechromes</string>
-		<string>waze</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Segoe UI.ttf</string>
-		<string>segoe-ui-bold.ttf</string>
-		<string>seguisb.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -159,24 +159,20 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         }
         if let wd = UIApplication.shared.delegate?.window {
             var vc = wd!.rootViewController
+            print(vc)
             if(vc is UINavigationController){
                 vc = (vc as! UINavigationController).visibleViewController
                 
             }
-            
-            if(vc is RequestDriverVC){
+          
+            let vc1 = RequestDriverVC()
+            if(vc1.isViewLoaded){
                 //your code
             }
             else
             {
                 AudioServicesPlayAlertSound(SystemSoundID(1322))
                 
-                //close the sidebar if already open
-                
-                //        if reveal.frontViewPosition == FrontViewPosition.right {
-                //            reveal.revealToggle(animated: true)
-                //
-                //        }
                 
                 let jsonObj = JSON(note.userInfo!)
                 
@@ -538,6 +534,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
         
         let status = profileStatus
         print(status)
+        
         if(status == 1)
         {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -627,7 +624,7 @@ class DrivemapVC: UIViewController,CLLocationManagerDelegate {
     
     private func toggleLocationUpdatesToServer(toggle: Bool) {
         if toggle {
-            tenSecTimer = Timer.scheduledTimer(timeInterval: 10,
+            tenSecTimer = Timer.scheduledTimer(timeInterval:3,
                                                target:self,
                                                selector: #selector(DrivemapVC.SendMyLocationToServer),
                                                userInfo: nil, repeats: true)

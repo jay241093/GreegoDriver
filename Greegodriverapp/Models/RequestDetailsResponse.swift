@@ -20,11 +20,11 @@ public struct RequestDetailsResponse: Codable {
 }
 
 public struct dataa: Codable {
-    public let body: Body?
-    public let vehicelModel, vehicelName: String?
-    public let vehicleYear: Int?
-    public let vehicleColor: String?
-    public let average_user_rating: String?
+    public let body: Body
+    public let vehicelModel, vehicelName: String
+    public let vehicleYear: Int
+    public let vehicleColor: String
+    public let average_user_rating: String
 
     
     enum CodingKeys: String, CodingKey {

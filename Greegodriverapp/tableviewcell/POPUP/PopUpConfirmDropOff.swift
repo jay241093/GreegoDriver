@@ -38,9 +38,6 @@ class PopUpConfirmDropOff: UIViewController {
         
         imageView.kf.setImage(with: imageres, placeholder: UIImage(named: "default-user"), options: nil, progressBlock: nil)
 
-        
-        
-        
         lblArrivedAtLocation.text = "Did You Arrived at \(nameOfuser)'s Destination?"
         
     }

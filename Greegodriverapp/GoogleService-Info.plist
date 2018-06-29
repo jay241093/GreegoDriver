@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>625828488279-de3br9r17hv6qa2mc0ur0ohb2np56ink.apps.googleusercontent.com</string>
+	<string>1034908928712-r12cpovaiqejf9bc1c7eofl64mvtscu3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.625828488279-de3br9r17hv6qa2mc0ur0ohb2np56ink</string>
+	<string>com.googleusercontent.apps.1034908928712-r12cpovaiqejf9bc1c7eofl64mvtscu3</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBHeDQf0a8rt6NeJvwcPZoKqGwxnK1wSQ8</string>
+	<string>AIzaSyDSNE3M1W24PtzNegO8PrHz6fzr_q_C4Ec</string>
 	<key>GCM_SENDER_ID</key>
-	<string>625828488279</string>
+	<string>1034908928712</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>innoviussoftware.Greegodriverapp1</string>
+	<string>co.greegodriver.application.gnsus</string>
 	<key>PROJECT_ID</key>
-	<string>greegoapp-200012</string>
+	<string>greegoapp</string>
 	<key>STORAGE_BUCKET</key>
-	<string>greegoapp-200012.appspot.com</string>
+	<string>greegoapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:625828488279:ios:3eb405cef6bc4abb</string>
+	<string>1:1034908928712:ios:c01f9dbe65d6bf7d</string>
 	<key>DATABASE_URL</key>
-	<string>https://greegoapp-200012.firebaseio.com</string>
+	<string>https://greegoapp.firebaseio.com</string>
 </dict>
 </plist>
